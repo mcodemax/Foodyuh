@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Foodyuh
+A portfolio. For your diet.
+###### Developer: Maxwell Johnson
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Link to Foodyuh](https://github.com/mcodemax/Foodyuh#readme) 
 
-## Available Scripts
+Description: A website where users can create a several plates or "Portfolios" of food and have a nutritional analysis of all components combined.
 
-In the project directory, you can run:
+### Features:
+- **Create multiple plates**: Users can create multiple plates with different foods.
+    
+### Basic user flow:
+1. User must create a Foodyuh account to use Foodyuh. 
+2. After registering, users can create meals made of > plates make of > individual foods.
+3. Following plate creation users can combine different plates they have made and add them to different meals they have in their account.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### APIs used: 
+1. Alpha Vantage:
+    - Root URL: https://fdc.nal.usda.gov/
+    - [Docs](https://fdc.nal.usda.gov/api-guide.html)
+2. Pexels:
+    - Root URL: https://www.pexels.com/api/
+    - [Docs](https://www.pexels.com/api/documentation/)
+    
+### Tech stack:
+- Front-end: HTML, CSS, JS, React, Axios, Bootstrap, Font Awesome, Formik
+- Backend: Express, WTForms, Bcrypt
+- Database: PostgresQL
+- Deployment: Heroku
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To access required tools, run the following in terminal:
 
-### `npm test`
+`python3 -m venv venv`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`source venv/bin/activate`
 
-### `npm run build`
+`pip install -r requirements.txt`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then run the backend server by typing `nodemon` or `nodemon FILE_NAME`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**The code in this repo is written specifically for deployment purposes. In order to interact with the code locally on your machine, you must do the following:**
+1. Create a file `secret_codes.py` and define the `ALPHA_VAN_API_KEY` and `SECRET_KEY` variables according to your own dev environment.
+    - Add to `.gitignore` file
+2. Uncomment out secretcodes import in app.py
+3. change xxx to SECRET_KEY in line 30 of app.py ... where it says app.config['SECRET_KEY']
+4. change ALPHA_VAN_API_KEY const declaration line in app.py
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Possible features to add:
+- **Payment Integration with Stripe**: Gate keep routes that a user must pay for.
