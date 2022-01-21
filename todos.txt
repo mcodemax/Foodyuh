@@ -1,0 +1,24 @@
+1. Make homepage
+
+2. Make login component
+    -has form
+    -integrate formik
+
+3. Make a component after you login 
+    -list all plates(you can click ithe individual plates)
+    -form to make a plate (use formikl)
+    
+
+4. Make component for individual plates
+    -see above
+    -
+
+5. Don't crowd the App component 
+
+6. backend users.js route altered. might need to readd f()s; look at jobly backend if ned to readd f()s
+    -for this route also make the json validation schema since isPaid was added
+
+
+priorty:
+    1. make foodyuh api and test it.
+    2. make a foodyuhapi method for every route in the backend
