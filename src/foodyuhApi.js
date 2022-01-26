@@ -74,7 +74,7 @@ class FoodyuhApi {
 
   /** Get the current user.; works */
   static async getCurrentUser(username) {
-    let res = await this.request(`users/${username}`);
+    let res = await this.request(`users/user/${username}`);
     return res.user;
   }
 

@@ -1,0 +1,36 @@
+.NavBar {
+    background-color: #221d1d;
+    border-bottom: 2px solid rgba(0,0,0,.125);
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    position: relative;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    a {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+        display: block;
+        padding: 0.5rem 1rem;
+        color: #007bff;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    a:active {
+        background-color: yellow;
+    }
+}

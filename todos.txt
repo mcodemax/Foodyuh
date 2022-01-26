@@ -21,4 +21,9 @@
 
 priorty:
     1. make foodyuh api and test it.
-    2. make a foodyuhapi method for every route in the backend
+        -everything done except editting and deleting a user method.
+    2. now: start working on actual deisnging of frontend
+
+Maybe make foods you can select from like a card deck looking layout.
+
+currenet:: make a login component
