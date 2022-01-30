@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes, Navigate, NavLink } from 'react-router-do
 import NavBar from './NavBar';
 import UserContext from "../auth/UserContext";
 import Login from '../homepage/Login';
+import ProfilePage from '../profiles/ProfilePage';
+import SignUpForm from '../homepage/SignUpForm';
 
 function Navigation(params) {
     const { currentUser, 
@@ -19,6 +21,7 @@ function Navigation(params) {
                 <Routes> {/* replaces <Switch> in v6*/ }
                     <Route exact="true" path="/" element={
                         <>
+                        {console.debug('In Navigation.js -> / route')}
                         { !currentUser ?
                         <div className="Navigation-home">
                             <h1>Foodyuh</h1>
@@ -37,12 +40,12 @@ function Navigation(params) {
                         <Login login={login}/>
                         </>
                     }/>
-                    {/* <Route exact="true" path="/signup" element={
+                    <Route exact="true" path="/signup" element={
                         <>
                         <SignUpForm signUp={signUp}/>
                         </>
                     }/>
-                    <Route exact="true" path="/plates" element={
+                    {/* <Route exact="true" path="/plates" element={
                         currentUser ? <PlatesList /> : <Navigate replace to="/" />
                     }/>
                     <Route exact="true" path="/plates/addfood" element={
@@ -51,9 +54,13 @@ function Navigation(params) {
                     <Route path="/plates/:plateId" element={
                         currentUser ? <PlateDetail /> : <Navigate replace to="/" />
                     } /> */}
-                    {/* <Route path="/user/profile" element={
-                        currentUser ? <ProfilePage /> : <Navigate replace to="/" />
-                    } /> */}
+                    <Route path="/user/profile" element={
+                        <>
+                        {console.debug('In Navigation.js -> /user/profile')}
+                        
+                        {currentUser ? <ProfilePage /> : <Navigate replace to="/" />}
+                        </>
+                    } />
                     <Route path="*" element={<Navigate replace to="/" />} />
                     {/*
                         When no other route matches the URL, you can render a "not found"

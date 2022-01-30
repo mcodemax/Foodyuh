@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Login.scss';
 import * as Yup from 'yup';
-import { Formik, Form, Field, ErrorMessage  } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 
 //might need to implement isLoading banner until requests are finished
@@ -22,7 +22,7 @@ function Login({ login }) {
     });
 
     const onSubmit = async (values, {resetForm}) => {
-
+        console.debug('In Login.js, onSubmit')
         console.log("Form Data: ", values);//comment out later so password not revealed
         
         const res = await login(values.username, values.password);
@@ -37,6 +37,7 @@ function Login({ login }) {
 
         // https://github.com/jaredpalmer/formik/issues/446
     };
+    
     return (
         <div className="Login">
             { loginErrors.length ? 
@@ -51,13 +52,13 @@ function Login({ login }) {
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}
             >
-                <Form className={`Login`}>
-                    <div className={`Login-username`}>
+                <Form className={`Login-form`}>
+                    <div className={`Login-form-username`}>
                         <label htmlFor="username">Username</label>
                         <Field type="text" id="username" name="username" />
                         <ErrorMessage name="username"  />
                     </div>
-                    <div className={`Login-password`}>
+                    <div className={`Login-form-password`}>
                         <label htmlFor="password">Password</label>
                         <Field type="password" id="password" name="password" />
                         <ErrorMessage name="password"  />

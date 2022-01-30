@@ -87,10 +87,12 @@ function App() {
           // put the token on the Api class so it can use it to call the API.
           FoodyuhApi.token = token;
           let currentUser = await FoodyuhApi.getCurrentUser(username);
+          
+          console.debug('In App.js getCurrentUser',currentUser)
           setCurrentUser(currentUser);
 
           setPlateIds(currentUser.plates);// turn this into plate ids and 
-          //possibly fdcIds
+          //possibly fdcIds  //above might be redundant code
         } catch (err) {
           console.error("App loadUserInfo: problem loading", err);
           setCurrentUser(null);
@@ -106,6 +108,8 @@ function App() {
     getCurrentUser();
   }, [token]); //might need to update currentUser when updating plates/foods
 
+
+  if(!infoLoaded) return (<>{`WE LOADING`}</>)
 
   return (
     <UserContext.Provider

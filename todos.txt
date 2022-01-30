@@ -18,7 +18,7 @@
 6. backend users.js route altered. might need to readd f()s; look at jobly backend if ned to readd f()s
     -for this route also make the json validation schema since isPaid was added
 
-
+7. Add a loading icon or freeze while requests are going thru to backend
 priorty:
     1. make foodyuh api and test it.
         -everything done except editting and deleting a user method.
@@ -26,4 +26,11 @@ priorty:
 
 Maybe make foods you can select from like a card deck looking layout.
 
-currenet:: make a login component
+currenet:: 
+-make sign up component (done but server errors say instance.blah ned to be more chars from backend
+maybe refactor errors returned in backend?)
+
+-make profile page component and foodyuhAPI to connect to /users in backend and change info
+    -edit info form part of compoenent not finished
+    -need foodyuhapi edit info updates
+    -currently working on onSubmit and editUserInfo(foodyuhapi)
