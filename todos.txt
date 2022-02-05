@@ -31,6 +31,8 @@ currenet::
 maybe refactor errors returned in backend?)
 
 -make profile page component and foodyuhAPI to connect to /users in backend and change info
-    -edit info form part of compoenent not finished
-    -need foodyuhapi edit info updates
-    -currently working on onSubmit and editUserInfo(foodyuhapi)
+    -bug: there's no state change after updating info unless you manually refresh page in browser
+
+Component that list all plates
+    Sub Component that list top 4 foods in that plate in a window images
+    Be sure to change the userinfo obj when adding to plate.

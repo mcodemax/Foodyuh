@@ -10,7 +10,7 @@ import * as Yup from 'yup';
  * { username, password, firstName, lastName, email }
  */
 const SignUpForm = ({ signUp }) => {
-    const [signUpErrors, setSignUpErrors] = useState([]); //not implemented
+    const [signUpErrors, setSignUpErrors] = useState([]);
     const navigate = useNavigate();
     const initialValues = {
         username: "",
@@ -40,7 +40,6 @@ const SignUpForm = ({ signUp }) => {
         console.debug('In SignUpForm.js, onSubmit')
         console.log("Form Data: ", values);//comment out later so password not revealed
         
-
         //a copy of values object is made so this component does not become uncontrolled
         const valuesCopy = {...values}
         delete valuesCopy.confirmPassword; 
@@ -48,7 +47,10 @@ const SignUpForm = ({ signUp }) => {
         const res = await signUp(valuesCopy);
 
         if(res.success){
+            //maybe make success banner if true in html
             navigate("/user/profile"); 
+
+            //see bug in todos
         }else{
             setSignUpErrors(res.errors)//trouble shoot later how to actuallyy display these properly
             resetForm({});

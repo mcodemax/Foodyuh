@@ -8,7 +8,7 @@ import FoodyuhApi from "../foodyuhApi";
 
 function ProfilePage() {
     const {currentUser, setCurrentUser} = useContext(UserContext);
-    // const [changeInfoErrors, setChangeInfoErrors] = useState([]); //implement later
+    const [changeInfoErrors, setChangeInfoErrors] = useState([]); //implement later
     const navigate = useNavigate();
 
     //show user details
@@ -23,18 +23,21 @@ function ProfilePage() {
         lastName: "",
         email: "",
         password: "",
-        changepassword: ""
-    };
+        newPassword: "",
+        newPasswordConfirm: ""
+    };  //add if statements and validation later and check password = username.password or somethin
+        //for backend, then delete password and newPaswordconfirm on object
+        //make sure in the compoenent newPassword and newPassword are optional if left blank!!!
 
     const validationSchema = Yup.object({
-        firstName: Yup.string().min(1).max(255, 'Max first name length is 255 characters').required("Required"),
-        lastName: Yup.string().min(1).max(255, 'Max last name length is 255 characters').required("Required"),
-        email: Yup.string().email('Must be a valid email').min(1).max(255, 'Max email length is 255 characters').required('Email is required'),
-        password: Yup.string().min(5).max(255, 'Max password length is 255 characters').required("Required"),
-        confirmPassword: Yup.string().when("password", {
+        firstName: Yup.string().min(1).max(255, 'Max first name length is 255 characters').notRequired().default(undefined),
+        lastName: Yup.string().min(1).max(255, 'Max last name length is 255 characters').notRequired().default(undefined),
+        email: Yup.string().email('Must be a valid email').min(1).max(255, 'Max email length is 255 characters').notRequired().default(undefined),
+        newPassword: Yup.string().min(5).max(255, 'Max password length is 255 characters').notRequired("Required"),
+        newPasswordConfirm: Yup.string().when("newPassword", {
             is: val => (val && val.length > 0 ? true : false),
             then: Yup.string().oneOf(
-              [Yup.ref("password")],
+              [Yup.ref("newPassword")],
               "Both passwords need to match"
             )
         })
@@ -44,10 +47,26 @@ function ProfilePage() {
 
         console.log("Form Data: ", values);//comment out later so password not revealed
         
-        const res = await login(values.username, values.password);
+        //a copy of values object is made so this component does not become uncontrolled
+        const valuesCopy = {...values}
+
+        //alters info change data to fit FoodyuhApi.editUserInfo allowed input
+        if(valuesCopy.newPassword){
+            valuesCopy.password = valuesCopy.newPassword;
+            delete valuesCopy.newPassword;
+            delete valuesCopy.newPasswordConfirm;
+        }
+
+        for(let value in valuesCopy){
+            if(!valuesCopy[value]) delete valuesCopy[value];
+        }
+
+        const res = await FoodyuhApi.editUserInfo(currentUser.username, valuesCopy);
 
         if(res.success){
+            //maybe add state to display success banner after changing info
             navigate("/user/profile"); 
+            //bug: there's no state change after altering user info
         }else{
             setChangeInfoErrors(res.errors)//trouble shoot later how to actuallyy display these properly
             resetForm({});
@@ -70,7 +89,7 @@ function ProfilePage() {
                 {/* {editForm()} */}
             </div>
 
-
+            {/* implement plate addition component; PlatesView */}
 
             <div className="ProfilePage-form">
                 {/* { changeInfoErrors.length ? 
@@ -83,7 +102,7 @@ function ProfilePage() {
                 } */}
                 <Formik initialValues={initialValues}
                     validationSchema={validationSchema}
-                    // onSubmit={onSubmit}
+                    onSubmit={onSubmit}
                 >   
                     <>
                     {/* Formik component can only have one child. */}
@@ -104,15 +123,15 @@ function ProfilePage() {
                             <Field type="text" id="email" name="email" />
                             <ErrorMessage name="email"  />
                         </div>
-                        <div className={`ProfilePage-form-password`}>
-                            <label htmlFor="password">Password</label>
-                            <Field type="password" id="password" name="password" />
-                            <ErrorMessage name="password"  />
+                        <div className={`ProfilePage-form-new-password`}>
+                            <label htmlFor="newPassword">New Password (optional)</label>
+                            <Field type="password" id="newPassword" name="newPassword" autoComplete="off"/>
+                            <ErrorMessage name="newPassword"  />
                         </div>
-                        <div className={`ProfilePage-form-changePassword`}>
-                            <label htmlFor="changePassword">Confirm Password</label>
-                            <Field type="password" id="changePassword" name="changePassword" />
-                            <ErrorMessage name="changePassword"  />
+                        <div className={`ProfilePage-form-new-password-confirm`}>
+                            <label htmlFor="newPasswordConfirm">Confirm New Password</label>
+                            <Field type="password" id="newPasswordConfirm" name="newPasswordConfirm" autoComplete="off"/>
+                            <ErrorMessage name="newPasswordConfirm"  />
                         </div>
                         <button type="submit" id="submit">Submit</button>
                     </Form>
