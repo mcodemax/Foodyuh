@@ -12,11 +12,23 @@
     min-height: 1px;
     padding: 1.25rem;
 
+    .ProfilePage-Message {
+        color: whitesmoke;
+    }
+
+    .ProfilePage-changeInfo-failed {
+        color: whitesmoke;
+    }
+
+    .ProfilePage-changeInfo {
+        color: whitesmoke;
+    }
+
     p {
         text-align: left;
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
         word-wrap: break-word;
-        color: inherit;
+        color: whitesmoke;
         box-sizing: border-box;
         margin-top: 0;
         font-weight: 500;

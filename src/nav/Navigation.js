@@ -6,6 +6,7 @@ import UserContext from "../auth/UserContext";
 import Login from '../homepage/Login';
 import ProfilePage from '../profiles/ProfilePage';
 import SignUpForm from '../homepage/SignUpForm';
+import AllPlatesAdd from '../plates/AllPlatesAdd';
 
 function Navigation(params) {
     const { currentUser, 
@@ -45,10 +46,10 @@ function Navigation(params) {
                         <SignUpForm signUp={signUp}/>
                         </>
                     }/>
-                    {/* <Route exact="true" path="/plates" element={
-                        currentUser ? <PlatesList /> : <Navigate replace to="/" />
+                    <Route exact="true" path="/plates" element={
+                        currentUser ? <AllPlatesAdd /> : <Navigate replace to="/" />
                     }/>
-                    <Route exact="true" path="/plates/addfood" element={
+                    {/* <Route exact="true" path="/plates/addfood" element={
                         currentUser ? <AddFoodList /> : <Navigate replace to="/" />
                     }/>
                     <Route path="/plates/:plateId" element={

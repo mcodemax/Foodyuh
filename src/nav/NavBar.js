@@ -12,9 +12,7 @@ const NavBar = ({logout}) => {
                 <NavLink to="/user/profile" className="navbar-brand">
                     Foodyuh
                 </NavLink>
-
                 <NavLink to="/plates">Plates</NavLink>                
-                <NavLink to="/jobs">Jobs</NavLink>
                 <NavLink to="/" onClick={logout}>Log out</NavLink>
             </>
         )    

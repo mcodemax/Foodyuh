@@ -1,8 +1,4 @@
-1. Make homepage
 
-2. Make login component
-    -has form
-    -integrate formik
 
 3. Make a component after you login 
     -list all plates(you can click ithe individual plates)
@@ -30,9 +26,75 @@ currenet::
 -make sign up component (done but server errors say instance.blah ned to be more chars from backend
 maybe refactor errors returned in backend?)
 
+
+done:
 -make profile page component and foodyuhAPI to connect to /users in backend and change info
-    -bug: there's no state change after updating info unless you manually refresh page in browser
+        Bug(nox fixed): 1.Reload Profile page
+        2. type in info and update it=>new userinfo corrrectly reflected  in UI, but
+            no "Info Change successful!" is shown
+        3. type in info and update it a second time=>a "Info Change Successful!" is flashed.
+            but it does not change userinfo correctly in UI now
+        ***
+        -I'm changing my local state(changeInfoErrors) which causes the component to rerender
+        -setting state is async so changeInfoErrors will become undefined when the component rerenders while the state is being set
+
+        -Interview answer for problems: 
+            A child component of my top level App component was making an API call and 
+            changing the user info on the server, but my app was not reflecting these changes
+            and I could not figure out why. I realized it was because the userinfo state did not change unless making
+            another API call to get the updated info from the server.
+            (the server response from an API call to update did not return all the data I needed)  
+            So I created a state variable in my top level App component that could be changed from the child
+            component updating if userinfo was changed. In a useEffect hook an API call would be made so every time that state variable changed
+            userinfo would be requested with an API call again and it would be reflected to the UI on re-rendering of my top level component.
+
+            Above isn't best practice:
+            lies/mentira below:
+            Best practice would be spreading the new data info the userinfo obj with the overriding the old data with updated data from the API call updating userinfo
+
+        -**aside: state will be set to a default value put into useState hook if a component is re-rendered
+        -  //del later
+        useEffect(() => {
+            if (signUpErrors) {
+            console.log(`signUpErrors`, signUpErrors, new Date());
+            } else {
+            console.log(`signUpErrors`, signUpErrors, new Date());
+            }
+        }, [signUpErrors]);
+
+        console.log(`component rerender`, new Date());
+        //del later
+        useEffect(() => {
+            if(changeInfoErrors){
+                console.log(`changeInfoErrors`, changeInfoErrors, new Date());
+            }else{
+                console.log(`changeInfoErrors`, changeInfoErrors, new Date());
+            }
+        }, [changeInfoErrors])
+        
+
 
 Component that list all plates
     Sub Component that list top 4 foods in that plate in a window images
     Be sure to change the userinfo obj when adding to plate.
+
+-Disable navigation to signup page if already loggedin
+
+-setTimeout ; setTimeout isn't guaranteed to call the f()s you pass into it after the interval.
+    it just passes it into the event queue after the the interval
+
+-rewatch react lectures, esp useState
+
+-know react lifecycle
+
+
+{
+              return (
+                <div className='ProfilePage-changeInfo-failed' key={uuidv4()}>
+                  {error}
+                </div>
+              );
+            })
+
+
+{<Message message={error}></Message>}
