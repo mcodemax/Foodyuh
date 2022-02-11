@@ -7,6 +7,7 @@ import Login from '../homepage/Login';
 import ProfilePage from '../profiles/ProfilePage';
 import SignUpForm from '../homepage/SignUpForm';
 import AllPlatesAdd from '../plates/AllPlatesAdd';
+import PlateDetails from '../plates/PlateDetails';
 
 function Navigation(params) {
     const { currentUser, 
@@ -51,10 +52,10 @@ function Navigation(params) {
                     }/>
                     {/* <Route exact="true" path="/plates/addfood" element={
                         currentUser ? <AddFoodList /> : <Navigate replace to="/" />
-                    }/>
+                    }/> */}
                     <Route path="/plates/:plateId" element={
-                        currentUser ? <PlateDetail /> : <Navigate replace to="/" />
-                    } /> */}
+                        currentUser ? <PlateDetails /> : <Navigate replace to="/" />
+                    } />
                     <Route path="/user/profile" element={
                         <>
                         {console.debug('In Navigation.js -> /user/profile')}

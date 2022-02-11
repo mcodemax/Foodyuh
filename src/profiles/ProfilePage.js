@@ -20,8 +20,6 @@ function ProfilePage() {
     newPasswordConfirm: '',
   };
 
-  console.warn('currentUser', currentUser);
-
   const validationSchema = Yup.object({
     firstName: Yup.string()
       .min(1)
@@ -77,7 +75,6 @@ function ProfilePage() {
     }
 
     try {
-      //maybe add state to display success banner after changing info
       const res = await FoodyuhApi.editUserInfo(
         currentUser.username,
         valuesCopy
@@ -91,11 +88,9 @@ function ProfilePage() {
       setShowMessage('Info Change Successful!');
     } catch (error) {
       setShowMessage('Info Change DENIED!');
-      setChangeInfoErrors(error); //trouble shoot later how to actuallyy display these properly
+      setChangeInfoErrors(error);
       resetForm({});
     }
-    //if login fail show error message and navigate back2Login
-
     // https://github.com/jaredpalmer/formik/issues/446
   };
 
@@ -129,18 +124,18 @@ function ProfilePage() {
         >
           <>
             <p>Edit Your Info:</p>
-            <Form className={`ProfilePage-form-password`}>
+            <Form className={`ProfilePage-form`}>
               <div className={`SignUpForm-firstName`}>
                 <label htmlFor='firstName'>First Name</label>
                 <Field type='text' id='firstName' name='firstName' />
                 <ErrorMessage name='firstName' />
               </div>
-              <div className={`SignUpForm-lastName`}>
+              <div className={`ProfilePage-form-lastName`}>
                 <label htmlFor='lastName'>Last Name</label>
                 <Field type='text' id='lastName' name='lastName' />
                 <ErrorMessage name='lastName' />
               </div>
-              <div className={`SignUpForm-email`}>
+              <div className={`ProfilePage-form-email`}>
                 <label htmlFor='email'>Email</label>
                 <Field type='text' id='email' name='email' />
                 <ErrorMessage name='email' />

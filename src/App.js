@@ -13,7 +13,7 @@ export const TOKEN_STORAGE_ID = 'foodyuh-token';
 //make api call back end for token, store token as state
 function App() {
   // console.log(FoodyuhApi.getImages('fight78t67gbyv7658').then(e => console.log(e)))
-
+  // console.log(FoodyuhApi.addPlate('linguini9', 'spicy meat bol').then(e => console.log(e)))
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [userInfoUpdated, setUserInfoUpdated] = useState(null); //used when plates are added or userinfo changed
   const [currentUser, setCurrentUser] = useState(null);
