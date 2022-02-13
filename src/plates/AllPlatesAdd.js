@@ -58,7 +58,7 @@ function AllPlatesAdd() {
           ? currentUser.plates.map((plate) => {
               return (
                 <div className='AllPlatesAdd-Plate' key={`plate-${plate.id}`}>
-                  <p>{plate.name}</p>
+                  <a href={`/plates/${plate.id}`}>{plate.name}</a>
                   <p>{plate.description}</p>
                 </div>
                 // add a hyperlink tag to navigate to indiv plate details
