@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import FoodyuhApi from '../foodyuhApi';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams } from 'react-router-dom';
+import FoodSearch from '../foods/FoodSearch';
 
 //when user adds a plate foodyuhapi.addPlate(name, description) is called, plate is returned
 //they get redirected to the returned plate specific page where they can add foods
@@ -77,11 +78,12 @@ function PlateDetails() {
   //maybe add a isModified variable
 
   useEffect(() => {
-    if (plate) {
+    if (plate) { //because plate's initial state is null
       setPlateInfoLoaded(true);
     }
   }, [plate]);
 
+  
   const validationSchema = Yup.object({
     name: Yup.string()
       .min(1)
@@ -106,7 +108,7 @@ function PlateDetails() {
             <p>{plate.description}</p>
           </>
         ) : null}
-        <p>Foods</p>
+        <p>Foods:</p>
         {plate
           ? plate.foods.map((food) => {
               return (
@@ -114,7 +116,7 @@ function PlateDetails() {
                   className='PlateDetails-Food'
                   key={`food-${food.fdcId}-${uuidv4()}`}
                 >
-                  <p>{console.log(food)}</p>
+                  <p>{console.log(food)}{`${food.details.description}`}</p>
                   {/* awwait the stuff in here , call FoodyuhApi.getFoodbyFdcId(food.fdcId) */}
                 </div>
                 // add a hyperlink tag to navigate to indiv plate details
@@ -139,7 +141,8 @@ function PlateDetails() {
           onSubmit={onSubmit}
         >
           <>
-            <p>Add a Food</p>
+            <FoodSearch plateId={plateId} />
+            {/* <p>Add a Food</p>
             <Form className={`PlateDetails-form`}>
               <div className={`PlateDetails-form-name`}>
                 <label htmlFor='name'>Plate Name</label>
@@ -154,7 +157,7 @@ function PlateDetails() {
               <button type='submit' id='submit'>
                 Submit
               </button>
-            </Form>
+            </Form> */}
           </>
         </Formik>
       </div>

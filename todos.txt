@@ -26,6 +26,9 @@ currenet::
 -make plate summary component 
     -make plate add f() in foodyuhAPI, done
     -add hyperlink to specific plate in loop inside component to access plate specific compoentn for each plate
+
+    bug:
+    once a plate is submitted, and going back to list of all plates, the plate doesn't show
     
 -make plate specific Component
     -make sure userstate changes in compoenent by making api call 

@@ -117,6 +117,12 @@ class FoodyuhApi {
     let res = await this.request(`plates/${plateId}`);
     return res.plate;
   }
+
+  /** Add food to specific plate */
+  static async addFood(fdcId, plateId) {
+    let res = await this.request(`plates/${plateId}`, {fdcId: fdcId.toString() }, 'post');
+    return res.plate;
+  }
 }
 
 // for now, put token ("testuser" / "password" on class)
