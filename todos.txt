@@ -23,6 +23,8 @@ priorty:
 Maybe make foods you can select from like a card deck looking layout.
 
 currenet:: 
+-make sure plates and username state added when a food is added to a plate
+
 -make plate summary component 
     -make plate add f() in foodyuhAPI, done
     -add hyperlink to specific plate in loop inside component to access plate specific compoentn for each plate

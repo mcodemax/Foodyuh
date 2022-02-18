@@ -45,6 +45,7 @@ function Food({food, plateId}) {
       {console.log(food)
       //add data type for html, fdcId
       }
+      <img src={food.image} alt="Food pic not avail"></img>
       <span>Food Name: {`${food.description}`} </span>
       <span>Description: {`${food.lowercaseDescription}`} </span>
       <span>Brand: {`${food.brandName}`} </span>

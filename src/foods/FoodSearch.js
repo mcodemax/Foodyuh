@@ -17,13 +17,23 @@ function FoodSearch({plateId}) {
   };
 
   const onSubmit = async (values, { resetForm }) => {
-
     try {
       const res = await FoodyuhApi.searchForFoods(values.search);
+      const pics = await FoodyuhApi.getImages(values.search);
+
+      res.forEach((food, idx) => {
+        if(pics){
+          food.image = pics[idx]['src']['small'];
+        }else{
+          food.image = '';
+        }
+        console.log(pics[idx]['src']['small'])
+      });
+
       setFoods(res);
-      console.log(res)
     } catch (error) {
       //implment error handling later
+        console.log(error)
         resetForm({});
     }
     // https://github.com/jaredpalmer/formik/issues/446
@@ -65,7 +75,7 @@ function FoodSearch({plateId}) {
                 <>
                   <Food food={food} plateId={plateId} key={uuidv4()}/>
                   {/* pass in f() to food component to add call f() to add food to the plate */}
-                  {console.log(food)}
+                  {/* {console.log(food)} */}
                   {/*
                     let's pass in params to a food card 
                     lets display:
