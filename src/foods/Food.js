@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import FoodyuhApi from '../foodyuhApi';
-import FoodSearch from './FoodSearch';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -29,7 +28,7 @@ function Food({food, plateId}) {
       <>
       {foodNutrients.map(nutrient => {
       return (
-          <div className='Food-nutrient'>
+          <div className='Food-nutrient' key={uuidv4()}>
              <span>{nutrient.nutrientName}: {nutrient.value}{nutrient.unitName}</span>
             
            </div>
@@ -47,10 +46,11 @@ function Food({food, plateId}) {
       }
       <img src={food.image} alt="Food pic not avail"></img>
       <span>Food Name: {`${food.description}`} </span>
-      <span>Description: {`${food.lowercaseDescription}`} </span>
+      {/* <span>Description: {`${food.lowercaseDescription}`} </span> */}
       <span>Brand: {`${food.brandName}`} </span>
-      <span>Ingredients: {`${food.ingredients}`} </span>
-
+      {/* <span>Ingredients: {`${food.ingredients}`} </span> */}
+      {/* desc and ingredients ommitted b/c fdcapi search vs getting indiv food details returs 
+      differing data */}
       <div>
         Nutrient Profile: {nutrientDisplay(food.foodNutrients)}
       </div>

@@ -23,6 +23,16 @@ priorty:
 Maybe make foods you can select from like a card deck looking layout.
 
 currenet:: 
+    -get a piece of paper and map out what each component calls what
+    function so we can see how to call things so we onloy have to 
+    call 1 Food.js component with PlateDetails and FoodSearch
+    -there is a discrepany somewhere in the backend b/c FoodPlate returns a res that has Food{details>info you want}
+        while FoodSearch returns food{info you want}
+        conclusion: fdcAPI absolutely returns ddiff data whether you query indiv foods 
+            or search for them; make a Food component for search;
+                and a seperate FoodForPlate Component
+
+
 -make sure plates and username state added when a food is added to a plate
 
 -make plate summary component 

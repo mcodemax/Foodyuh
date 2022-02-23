@@ -58,7 +58,7 @@ function FoodSearch({plateId}) {
               <p>Search for a Food!</p>
               <Form className={`FoodSearch-form`}>
                 <div className={`FoodSearch-form-search`}>
-                  <label htmlFor='search' >Search</label>
+                  <label htmlFor='search'>Search</label>
                   <Field type='text' id='search' name='search' placeholder='Find a food'/>
                   <ErrorMessage name='search' />
                 </div>
@@ -74,17 +74,12 @@ function FoodSearch({plateId}) {
               return (
                 <>
                   <Food food={food} plateId={plateId} key={uuidv4()}/>
-                  {/* pass in f() to food component to add call f() to add food to the plate */}
-                  {/* {console.log(food)} */}
                   {/*
-                    let's pass in params to a food card 
-                    lets display:
-                      brandOwner
                       let's keep secret html value:
                       fdcId
+                      maybe not?^
                   */}
                 </>
-                // add a hyperlink tag to navigate to indiv plate details
               );
             }) : null}
       </div>
@@ -94,3 +89,5 @@ function FoodSearch({plateId}) {
 }
 
 export default FoodSearch;
+
+

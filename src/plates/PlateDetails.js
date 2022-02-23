@@ -8,6 +8,7 @@ import FoodyuhApi from '../foodyuhApi';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams } from 'react-router-dom';
 import FoodSearch from '../foods/FoodSearch';
+import Food from '../foods/Food';
 
 //when user adds a plate foodyuhapi.addPlate(name, description) is called, plate is returned
 //they get redirected to the returned plate specific page where they can add foods
@@ -117,6 +118,7 @@ function PlateDetails() {
                   key={`food-${food.fdcId}-${uuidv4()}`}
                 >
                   <p>{console.log(food)}{`${food.details.description}`}</p>
+                  {/* <Food food={food} plateId={plateId} key={uuidv4()}/> */}
                   {/* awwait the stuff in here , call FoodyuhApi.getFoodbyFdcId(food.fdcId) */}
                 </div>
                 // add a hyperlink tag to navigate to indiv plate details
