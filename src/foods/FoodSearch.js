@@ -21,6 +21,8 @@ function FoodSearch({plateId}) {
       const res = await FoodyuhApi.searchForFoods(values.search);
       const pics = await FoodyuhApi.getImages(values.search);
 
+      if(typeof res === 'string') throw ['No Foods Found'];
+
       res.forEach((food, idx) => {
         if(pics){
           food.image = pics[idx]['src']['small'];
@@ -30,10 +32,10 @@ function FoodSearch({plateId}) {
         console.log(pics[idx]['src']['small'])
       });
 
+      setErrors([]);
       setFoods(res);
     } catch (error) {
-      //implment error handling later
-        console.log(error)
+        setErrors(error);//shove array of errors in here, need to reset errors if resubmission successful
         resetForm({});
     }
     // https://github.com/jaredpalmer/formik/issues/446
@@ -55,7 +57,7 @@ function FoodSearch({plateId}) {
             onSubmit={onSubmit}
           >
             <>
-              <p>Search for a Food!</p>
+              <p>Search and add a Food!</p>
               <Form className={`FoodSearch-form`}>
                 <div className={`FoodSearch-form-search`}>
                   <label htmlFor='search'>Search</label>
@@ -69,6 +71,15 @@ function FoodSearch({plateId}) {
             </>
         </Formik>
       </div>
+      {errors.length
+          ? errors.map((error) => {
+              return (
+                <div className='FoodSearch-errors' key={uuidv4()}>
+                  {error}
+                </div>
+              );
+            })
+          : null}
       <div className='FoodSearch-foodslist'>
         {foods ? foods.map( food => {
               return (

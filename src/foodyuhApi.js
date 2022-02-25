@@ -118,10 +118,25 @@ class FoodyuhApi {
     return res.plate;
   }
 
-  /** Add food to specific plate */
+  /** Add food to specific plate; works */
   static async addFood(fdcId, plateId) {
     let res = await this.request(`plates/${plateId}`, {fdcId: fdcId.toString() }, 'post');
     return res.plate;
+  }
+
+  /** Delete food from specific plate 
+   * fdcId must be text not integer
+   * ;works
+  */
+  static async deleteFood(fdcId, plateId) {
+    let res = await this.request(`plates/${plateId}`, {fdcId: fdcId.toString() }, 'delete');
+    return res.plate;
+  }
+
+  /** Delete plate */
+  static async deletePlate(fdcId, plateId) {
+    let res = await this.request(`plates/delete/${plateId}`, 'delete');
+    return res.deletedPlate;
   }
 }
 

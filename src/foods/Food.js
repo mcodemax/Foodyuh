@@ -30,7 +30,6 @@ function Food({food, plateId}) {
       return (
           <div className='Food-nutrient' key={uuidv4()}>
              <span>{nutrient.nutrientName}: {nutrient.value}{nutrient.unitName}</span>
-            
            </div>
          )
        }) 
@@ -39,6 +38,8 @@ function Food({food, plateId}) {
     )
   }
 
+
+  //for styling we want to make this into a card and center it.
   return (
     <div className='Food' >
       {console.log(food)
@@ -57,7 +58,7 @@ function Food({food, plateId}) {
       <span></span>
       <span></span>
 
-      <button onClick={() => addFoodtoPlate(food.fdcId, plateId)}>Btn to add food to plate</button> 
+      <button onClick={() => addFoodtoPlate(food.fdcId, plateId)}>Add food to my plate!</button> 
       {/* https://upmostly.com/tutorials/react-onclick-event-handling-with-examples */}
     </div>
   )

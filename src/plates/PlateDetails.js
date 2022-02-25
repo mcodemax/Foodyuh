@@ -8,7 +8,9 @@ import FoodyuhApi from '../foodyuhApi';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams } from 'react-router-dom';
 import FoodSearch from '../foods/FoodSearch';
-import Food from '../foods/Food';
+import FoodForPlate from '../foods/FoodForPlate';
+import { foodTotals } from './foodNutrients';
+
 
 //when user adds a plate foodyuhapi.addPlate(name, description) is called, plate is returned
 //they get redirected to the returned plate specific page where they can add foods
@@ -17,13 +19,16 @@ import Food from '../foods/Food';
 function PlateDetails() {
   const { plateId } = useParams(); //https://ui.dev/react-router-url-parameters
   const { currentUser } = useContext(UserContext);
-  const [changeInfoErrors, setChangeInfoErrors] = useState([]); //implement later
+  const [errors, setErrors] = useState([]); //implement later
   const [plateInfoLoaded, setPlateInfoLoaded] = useState(false);
   const [plate, setPlate] = useState();
+  const [totalNutrition, settotalNutrition] = useState(foodTotals);
   const navigate = useNavigate();
+  
 
   //show all plates with foods in them in mini panels
   //clicking on an indiv plate goes to PlateDetails
+  
 
   const initialValues = {
     name: '',
@@ -72,7 +77,7 @@ function PlateDetails() {
       //          append the above with like food.image = res[1]......
     } catch (error) {
       console.error('App plateInfo: problem loading', error);
-      setChangeInfoErrors(error); //trouble shoot later how to actuallyy display these properly
+      setErrors(error); //trouble shoot later how to actuallyy display these properly
     }
   }, [currentUser]); //maybe make dependent on some vars that updates after adding an fdcid food
   //currentUser or something that gets modified once adding a food,
@@ -81,6 +86,22 @@ function PlateDetails() {
   useEffect(() => {
     if (plate) { //because plate's initial state is null
       setPlateInfoLoaded(true);
+      const accumFoodTotals = JSON.parse(JSON.stringify(foodTotals));
+
+      plate.foods.forEach( food => {
+        food.details.foodNutrients.forEach( nutrient => {
+          const nutrientNumber = nutrient.number;
+          // console.log(nutrient.number, nutrient.amount, accumFoodTotals[nutrientNumber])
+          accumFoodTotals[nutrient.number].value+=nutrient.amount;
+          //alter the above so we have nothing weird happen.
+        });
+      });
+
+      settotalNutrition(accumFoodTotals);
+      console.log(accumFoodTotals)
+      // food.details.foodNutrients.map( nutrient => {
+
+      // });
     }
   }, [plate]);
 
@@ -95,8 +116,6 @@ function PlateDetails() {
       .max(255, 'Max plate description length is 255 characters')
       .required('Required'),
   });
-
-  //add a food search component
 
   const onSubmit = async (values, { resetForm }) => {};
 
@@ -117,51 +136,36 @@ function PlateDetails() {
                   className='PlateDetails-Food'
                   key={`food-${food.fdcId}-${uuidv4()}`}
                 >
-                  <p>{console.log(food)}{`${food.details.description}`}</p>
-                  {/* <Food food={food} plateId={plateId} key={uuidv4()}/> */}
-                  {/* awwait the stuff in here , call FoodyuhApi.getFoodbyFdcId(food.fdcId) */}
+                  <FoodForPlate food={food.details} plateId={plateId} setTotalNutrition={settotalNutrition} key={uuidv4()}/>
                 </div>
-                // add a hyperlink tag to navigate to indiv plate details
               );
             })
           : null}
+          <div className='PlateDetails-totalnutrition'>
+            <p>Total Plate Nutrition:</p>
+            <p>{totalNutrition[208].value} {totalNutrition[208].unitName}</p>
+            <p>{totalNutrition[203].value} {totalNutrition[203].unitName} {totalNutrition[203].nutrientName}</p>
+            <p>{totalNutrition[205].value} {totalNutrition[205].unitName} {totalNutrition[205].nutrientName}</p>
+            <p>{totalNutrition[204].value} {totalNutrition[204].unitName} {totalNutrition[204].nutrientName}</p>
+            <p>{totalNutrition[291].value} {totalNutrition[291].unitName} {totalNutrition[291].nutrientName}</p>
+            <p>{totalNutrition[401].value} {totalNutrition[401].unitName} {totalNutrition[401].nutrientName}</p>
+            <p>{totalNutrition[301].value} {totalNutrition[301].unitName} {totalNutrition[301].nutrientName}</p>
+          </div>
       </div>
 
       <div className='PlateDetails-form'>
         {/* {changeInfoErrors.length
           ? changeInfoErrors.map((error) => {
               return (
-                <div className='Login-failed' key={uuidv4()}>
+                <div className='PlateDetails-failed' key={uuidv4()}>
                   {error}
                 </div>
               );
             })
           : ``} */}
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        >
           <>
             <FoodSearch plateId={plateId} />
-            {/* <p>Add a Food</p>
-            <Form className={`PlateDetails-form`}>
-              <div className={`PlateDetails-form-name`}>
-                <label htmlFor='name'>Plate Name</label>
-                <Field type='text' id='name' name='name' />
-                <ErrorMessage name='name' />
-              </div>
-              <div className={`PlateDetails-form-description`}>
-                <label htmlFor='description'>Plate Description</label>
-                <Field type='text' id='description' name='description' />
-                <ErrorMessage name='description' />
-              </div>
-              <button type='submit' id='submit'>
-                Submit
-              </button>
-            </Form> */}
           </>
-        </Formik>
       </div>
     </div>
   );

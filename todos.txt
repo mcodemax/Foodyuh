@@ -22,7 +22,13 @@ priorty:
 
 Maybe make foods you can select from like a card deck looking layout.
 
-currenet:: 
+current:: 
+            lessons:
+          //don't try to mutate an object's values while you're rendering elements or expected behavoir can happen 
+            //https://stackoverflow.com/questions/43638938/updating-an-object-with-setstate-in-react
+
+FoodSearch.js Error handling complete
+
     -get a piece of paper and map out what each component calls what
     function so we can see how to call things so we onloy have to 
     call 1 Food.js component with PlateDetails and FoodSearch
