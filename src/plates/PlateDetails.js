@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import FoodSearch from '../foods/FoodSearch';
 import FoodForPlate from '../foods/FoodForPlate';
 import { foodTotals } from './foodNutrients';
+import LoadingSpinner from '../LoadingSpinner';
 
 
 //when user adds a plate foodyuhapi.addPlate(name, description) is called, plate is returned
@@ -70,11 +71,6 @@ function PlateDetails() {
       console.log('res asfter dets', res);
 
       setPlate(res);
-
-      //loop through plate.foods
-      //in promise.all make api call with FoodyuhApi.getFoodbyFdcId(food.fdcId)
-      //      and FoodyuhApi.getImages(search) [but using the first image in response]
-      //          append the above with like food.image = res[1]......
     } catch (error) {
       console.error('App plateInfo: problem loading', error);
       setErrors(error); //trouble shoot later how to actuallyy display these properly
@@ -91,17 +87,11 @@ function PlateDetails() {
       plate.foods.forEach( food => {
         food.details.foodNutrients.forEach( nutrient => {
           const nutrientNumber = nutrient.number;
-          // console.log(nutrient.number, nutrient.amount, accumFoodTotals[nutrientNumber])
           accumFoodTotals[nutrient.number].value+=nutrient.amount;
-          //alter the above so we have nothing weird happen.
         });
       });
 
       settotalNutrition(accumFoodTotals);
-      console.log(accumFoodTotals)
-      // food.details.foodNutrients.map( nutrient => {
-
-      // });
     }
   }, [plate]);
 
@@ -140,7 +130,7 @@ function PlateDetails() {
                 </div>
               );
             })
-          : null}
+          : <LoadingSpinner />}
           <div className='PlateDetails-totalnutrition'>
             <p>Total Plate Nutrition:</p>
             <p>{totalNutrition[208].value} {totalNutrition[208].unitName}</p>
@@ -154,15 +144,15 @@ function PlateDetails() {
       </div>
 
       <div className='PlateDetails-form'>
-        {/* {changeInfoErrors.length
-          ? changeInfoErrors.map((error) => {
+        {errors.length
+          ? errors.map((error) => {
               return (
                 <div className='PlateDetails-failed' key={uuidv4()}>
                   {error}
                 </div>
               );
             })
-          : ``} */}
+          : ``}
           <>
             <FoodSearch plateId={plateId} />
           </>

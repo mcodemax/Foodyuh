@@ -97,10 +97,15 @@ const SignUpForm = ({ signUp }) => {
             {/* Formik component can only have one child. */}
             <p>SIGN UP!</p>
             <Form className={`SignUpForm-form`}>
+              
               <div className={`SignUpForm-username`}>
-                <label htmlFor='username'>Username</label>
+                <div>
+                  <label htmlFor='username'>Username</label>
+                </div>
                 <Field type='text' id='username' name='username' />
-                <ErrorMessage name='username' />
+                <div>
+                  <ErrorMessage name='username' />
+                </div>
               </div>
               <div className={`SignUpForm-firstName`}>
                 <label htmlFor='firstName'>First Name</label>

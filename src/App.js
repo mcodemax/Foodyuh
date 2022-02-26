@@ -133,9 +133,7 @@ function App() {
       }}
     >
       <div className='App'>
-        <header className='App-header'>
           <Navigation logout={logout} />
-        </header>
       </div>
     </UserContext.Provider>
   );
