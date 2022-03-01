@@ -124,23 +124,23 @@ function ProfilePage() {
         >
           <>
             <p>Edit Your Info:</p>
-            <Form className={`ProfilePage-form`}>
-              <div className={`SignUpForm-firstName`}>
+            <Form className={'ProfilePage-form'}>
+              <div className={'SignUpForm-firstName field'}>
                 <label htmlFor='firstName'>First Name</label>
                 <Field type='text' id='firstName' name='firstName' />
-                <ErrorMessage name='firstName' />
+                <p className='form-warning'><ErrorMessage name='firstName' /></p>
               </div>
-              <div className={`ProfilePage-form-lastName`}>
+              <div className={'ProfilePage-form-lastName field'}>
                 <label htmlFor='lastName'>Last Name</label>
                 <Field type='text' id='lastName' name='lastName' />
-                <ErrorMessage name='lastName' />
+                <p className='form-warning'><ErrorMessage name='lastName' /></p>
               </div>
-              <div className={`ProfilePage-form-email`}>
+              <div className={'ProfilePage-form-email field'}>
                 <label htmlFor='email'>Email</label>
                 <Field type='text' id='email' name='email' />
-                <ErrorMessage name='email' />
+                <p className='form-warning'><ErrorMessage name='email' /></p>
               </div>
-              <div className={`ProfilePage-form-new-password`}>
+              <div className={'ProfilePage-form-new-password field'}>
                 <label htmlFor='newPassword'>New Password (optional)</label>
                 <Field
                   type='password'
@@ -148,9 +148,9 @@ function ProfilePage() {
                   name='newPassword'
                   autoComplete='off'
                 />
-                <ErrorMessage name='newPassword' />
+                <p className='form-warning'><ErrorMessage name='newPassword' /></p>
               </div>
-              <div className={`ProfilePage-form-new-password-confirm`}>
+              <div className={`ProfilePage-form-new-password-confirm field`}>
                 <label htmlFor='newPasswordConfirm'>Confirm New Password</label>
                 <Field
                   type='password'
@@ -158,7 +158,7 @@ function ProfilePage() {
                   name='newPasswordConfirm'
                   autoComplete='off'
                 />
-                <ErrorMessage name='newPasswordConfirm' />
+                <p className='form-warning'><ErrorMessage name='newPasswordConfirm' /></p>
               </div>
               <button type='submit' id='submit'>
                 Submit

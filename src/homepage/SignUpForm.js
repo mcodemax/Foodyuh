@@ -96,45 +96,40 @@ const SignUpForm = ({ signUp }) => {
           <>
             {/* Formik component can only have one child. */}
             <p>SIGN UP!</p>
-            <Form className={`SignUpForm-form`}>
-              
-              <div className={`SignUpForm-username`}>
-                <div>
-                  <label htmlFor='username'>Username</label>
-                </div>
+            <Form className='SignUpForm-form'>
+              <div className='SignUpForm-username field'>
+                <label htmlFor='username'>Username</label>
                 <Field type='text' id='username' name='username' />
-                <div>
-                  <ErrorMessage name='username' />
-                </div>
+                <p className='form-warning'><ErrorMessage name='username' /></p>
               </div>
-              <div className={`SignUpForm-firstName`}>
+              <div className={`SignUpForm-firstName field`}>
                 <label htmlFor='firstName'>First Name</label>
                 <Field type='text' id='firstName' name='firstName' />
-                <ErrorMessage name='firstName' />
+                <p className='form-warning'><ErrorMessage name='firstName'/></p>
               </div>
-              <div className={`SignUpForm-lastName`}>
+              <div className={`SignUpForm-lastName field`}>
                 <label htmlFor='lastName'>Last Name</label>
                 <Field type='text' id='lastName' name='lastName' />
-                <ErrorMessage name='lastName' />
+                <p className='form-warning'><ErrorMessage name='lastName' /></p>
               </div>
-              <div className={`SignUpForm-email`}>
+              <div className={`SignUpForm-email field`}>
                 <label htmlFor='email'>Email</label>
                 <Field type='text' id='email' name='email' />
-                <ErrorMessage name='email' />
+                <p className='form-warning'><ErrorMessage name='email' /></p>
               </div>
-              <div className={`SignUpForm-password`}>
+              <div className={`SignUpForm-password field`}>
                 <label htmlFor='password'>Password</label>
                 <Field type='password' id='password' name='password' />
-                <ErrorMessage name='password' autoComplete='off' />
+                <p className='form-warning'><ErrorMessage name='password' autoComplete='off' /></p>
               </div>
-              <div className={`SignUpForm-confirmPassword`}>
+              <div className={`SignUpForm-confirmPassword field`}>
                 <label htmlFor='confirmPassword'>Confirm Password</label>
                 <Field
                   type='password'
                   id='confirmPassword'
                   name='confirmPassword'
                 />
-                <ErrorMessage name='confirmPassword' autoComplete='off' />
+                <p className='form-warning'><ErrorMessage name='confirmPassword' autoComplete='off' /></p>
               </div>
               <button type='submit' id='submit'>
                 Submit
