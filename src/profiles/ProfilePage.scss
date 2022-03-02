@@ -15,90 +15,66 @@
     text-align: center!important;
 
     .ProfilePage-Message {
-        color: whitesmoke;
+        color: rgb(159, 192, 150);
     }
 
     .ProfilePage-changeInfo-failed {
-        color: whitesmoke;
+        color: red;
     }
 
-    .ProfilePage-changeInfo {
-        color: whitesmoke;
+    button {
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        user-select: none;
+        padding: .3rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        margin-top: 1rem!important;
+        font-weight: 600!important;
+        cursor: pointer;       
     }
 
-    form {
-        padding: 20px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-
+    .field {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        font-family: Geneva, sans-serif;
 
-        //make outline same color as parent's bkrnd later
-        // parent's background-color: rgb(165, 156, 156);
-        // content > border > outline
-        border: 5px solid rgb(49, 47, 83);
-        border-radius: 2pt;
-        outline: rgb(165, 156, 156) solid 10px;
-        background-color: rgb(182, 181, 181);
-
-        p {
-            display: inline-block;
-    
-            border: 1px solid transparent;
-            padding: .475rem .75rem;
-            font-size: 1rem;
-            
-            border-radius: .25rem;
-            
-            text-transform: uppercase!important;
-            font-weight: 700!important;
-
-            color: #fff;
-            background-color: #dc3545;
-            border-color: #dc3545;
+        label {
+            box-sizing: border-box;
+            width: 180px;
+            margin-top: 0;
+            flex-basis: 33%;
         }
 
         input {
             box-sizing: border-box;
-            margin: 0;
-            font-family: inherit;
-            overflow: visible;
-            font-weight: 400;
-            color: #495057;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid #ced4da;
-            height: calc(1.5em + 1rem + 2px);
-            padding: .25rem 1rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: .3rem;
-            flex-grow: 1!important;
-            display: inline-block;
-            width: auto;
-            vertical-align: middle;
+            color: blue;
+            width: 180px;
+            margin-top: 0;
+            flex-basis: 33%;
+            border-radius: 9px;
         }
 
-        .submit {
+        p {
+            font-family: Geneva, sans-serif;
+            font-size: 10px;
+            color: red;
+            margin-top: 0;
+            margin-bottom: 0;
             box-sizing: border-box;
-            font-family: inherit;
-            overflow: visible;
-            text-transform: none;
-            display: inline-block;
-            font-weight: 400;
-            text-align: center;
-            vertical-align: middle;
-            user-select: none;
-            border: 1px solid transparent;
-            color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
-            padding: .5rem 1rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: .3rem;
-            cursor: pointer;
+            width: 200px;
+            flex-basis: 33%;
+            align-self: center;
         }
+
+        
     }
+
 }
