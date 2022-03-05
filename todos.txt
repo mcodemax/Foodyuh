@@ -24,6 +24,10 @@ Maybe make foods you can select from like a card deck looking layout.
 
 current:: 
 
+3/4/22 AllPlatesAddError Styling won't align at the center.
+        implement plate removal
+            
+
 fix styling on signUpForm
             lessons:
           //don't try to mutate an object's values while you're rendering elements or expected behavoir can happen 

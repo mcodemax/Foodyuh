@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import jwt from 'jsonwebtoken';
 import React, { useState, useEffect } from 'react';

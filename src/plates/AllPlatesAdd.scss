@@ -1,0 +1,21 @@
+.AllPlatesAdd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .AllPlatesAdd-form {
+        .error {
+            font-family: Geneva, sans-serif;
+            font-size: 10px;
+            color: red;
+            margin-top: 0;
+            margin-bottom: 0;
+            box-sizing: border-box;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    
+}

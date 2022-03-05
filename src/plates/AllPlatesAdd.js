@@ -2,13 +2,10 @@ import React, { useState, useContext } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import UserContext from '../auth/UserContext';
-// import './AllPlatesAdd.scss';
+import './AllPlatesAdd.scss';
 import { useNavigate } from 'react-router-dom';
 import FoodyuhApi from '../foodyuhApi';
 import { v4 as uuidv4 } from 'uuid';
-
-//when user adds a plate foodyuhapi.addPlate(name, description) is called, plate is returned
-//they get redirected to the returned plate specific page where they can add foods
 
 /** Shows all existing plates & has a form to add plates */
 function AllPlatesAdd() {
@@ -16,7 +13,6 @@ function AllPlatesAdd() {
   const [changeInfoErrors, setChangeInfoErrors] = useState([]); //implement later
   const navigate = useNavigate();
 
-  //show all plates with foods in them in mini panels
   //clicking on an indiv plate goes to PlateDetails
 
   const initialValues = {
@@ -42,12 +38,23 @@ function AllPlatesAdd() {
         navigate(`/plates/${res.id}`, { replace: true });
         //after successful plate made go to specific plate where you can add foods
         //also need to update the userinfo and make another api call and update state in top level app component
-        // to get this plate.
+            //see implementation going to be similiar to implementation of this inProfilePage.js component
+
     } catch (error) {
         setChangeInfoErrors(error); //trouble shoot later how to actuallyy display these properly
         resetForm({});
     }
     // https://github.com/jaredpalmer/formik/issues/446
+  };
+
+  const deletePlate = async (plateId) => {
+    try {
+      console.log('aoiwfaowuf')
+      const res = await FoodyuhApi.deletePlate(plateId);
+      navigate(`/plates`, { replace: true });
+    } catch (error) {
+      setChangeInfoErrors(error); //trouble shoot later how to actuallyy display these properly
+    }
   };
 
   return (
@@ -60,6 +67,7 @@ function AllPlatesAdd() {
                 <div className='AllPlatesAdd-Plate' key={`plate-${plate.id}`}>
                   <a href={`/plates/${plate.id}`}>{plate.name}</a>
                   <p>{plate.description}</p>
+                  <button onClick={() => deletePlate(plate.id)}>Remove Plate</button>
                 </div>
                 // add a hyperlink tag to navigate to indiv plate details
               );
@@ -68,15 +76,15 @@ function AllPlatesAdd() {
       </div>
 
       <div className='AllPlatesAdd-form'>
-        {/* {changeInfoErrors.length
+        {changeInfoErrors.length
           ? changeInfoErrors.map((error) => {
               return (
-                <div className='Login-failed' key={uuidv4()}>
-                  {error}
+                <div className='AllPlatesAdd error' key={uuidv4()}>
+                  {error}. Try adding a plate with a different name.
                 </div>
               );
             })
-          : ``} */}
+          : ``}
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -84,13 +92,13 @@ function AllPlatesAdd() {
         >
           <>
             <p>Add a Plate!</p>
-            <Form className={`AllPlatesAdd-form`}>
-              <div className={`AllPlatesAdd-form-name`}>
+            <Form className={'AllPlatesAdd-form'}>
+              <div className={'AllPlatesAdd-form-name'}>
                 <label htmlFor='name'>Plate Name</label>
                 <Field type='text' id='name' name='name' />
                 <ErrorMessage name='name' />
               </div>
-              <div className={`AllPlatesAdd-form-description`}>
+              <div className={'AllPlatesAdd-form-description'}>
                 <label htmlFor='description'>Plate Description</label>
                 <Field type='text' id='description' name='description' />
                 <ErrorMessage name='description' />
