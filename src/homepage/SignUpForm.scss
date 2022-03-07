@@ -1,63 +1,69 @@
 .SignUpForm {
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #c7d6e6;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #c7d6e6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  width: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 720px;
+  text-align: center !important;
+
+  .SignUpForm-form {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
-    width: auto;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 720px;
-    text-align: center!important;
+    align-items: center;
+    padding-bottom: 50px;
 
-    .SignUpForm-form {
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        
-        label {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            text-align: left;
-        }
+    .field {
+      font-family: Geneva, sans-serif;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding: 0px 0px 0px;
 
-        input {
-            border-radius: .25rem;
-            font-family: Geneva, sans-serif;
-        }
+      label {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: left;
+      }
 
-        .field {
-            font-family: Geneva, sans-serif;
-            display: flex;
-            flex-direction: column;
-            height: 90px;
-        }
-
-        .form-warning {
-            font-family: Geneva, sans-serif;
-            color: red;
-            margin-top: 0;
-        }
+      input {
+        border-radius: 0.25rem;
+        font-family: Geneva, sans-serif;
+      }
     }
-    
+
+    .form-warning {
+      font-family: Geneva, sans-serif;
+      color: red;
+      box-sizing: border-box;
+      font-size: 10px;
+      height: 12px;
+    }
+
     button {
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        vertical-align: middle;
-        user-select: none;
-        padding: .3rem .75rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        border-radius: .25rem;
-        color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
-        margin-top: 1rem!important;
-        font-weight: 600!important;
-        cursor: pointer;       
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      user-select: none;
+      padding: 0.3rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 0.25rem;
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+      margin-top: 1rem !important;
+      font-weight: 600 !important;
+      cursor: pointer;
+      width: 100px;
     }
+  }
 }

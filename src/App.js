@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import jwt from 'jsonwebtoken';
 import React, { useState, useEffect } from 'react';
 import useLocalStorage from './hooks/useLocalStorage';

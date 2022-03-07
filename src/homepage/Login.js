@@ -52,16 +52,16 @@ function Login({ login }) {
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}
             >
-                <Form className={`Login-form`}>
-                    <div className={`Login-form-username`}>
+                <Form className={'Login-form'}>
+                    <div className={'Login-form-username form'}>
                         <label htmlFor="username">Username</label>
                         <Field type="text" id="username" name="username" />
-                        <ErrorMessage name="username"  />
+                        <p className='form-warning'><ErrorMessage name="username"  /></p>
                     </div>
-                    <div className={`Login-form-password`}>
+                    <div className={'Login-form-password form'}>
                         <label htmlFor="password">Password</label>
                         <Field type="password" id="password" name="password" />
-                        <ErrorMessage name="password"  />
+                        <p className='form-warning'><ErrorMessage name="password"  /></p>
                     </div>
                     <button type="submit">Submit</button>
                 </Form>

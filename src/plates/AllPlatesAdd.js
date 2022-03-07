@@ -79,8 +79,8 @@ function AllPlatesAdd() {
         {changeInfoErrors.length
           ? changeInfoErrors.map((error) => {
               return (
-                <div className='AllPlatesAdd error' key={uuidv4()}>
-                  {error}. Try adding a plate with a different name.
+                <div className='error' key={uuidv4()}>
+                  <p>{error}. Try adding a plate with a different name.</p>
                 </div>
               );
             })
@@ -93,12 +93,12 @@ function AllPlatesAdd() {
           <>
             <p>Add a Plate!</p>
             <Form className={'AllPlatesAdd-form'}>
-              <div className={'AllPlatesAdd-form-name'}>
+              <div className={'AllPlatesAdd-form-name field'}>
                 <label htmlFor='name'>Plate Name</label>
                 <Field type='text' id='name' name='name' />
                 <ErrorMessage name='name' />
               </div>
-              <div className={'AllPlatesAdd-form-description'}>
+              <div className={'AllPlatesAdd-form-description field'}>
                 <label htmlFor='description'>Plate Description</label>
                 <Field type='text' id='description' name='description' />
                 <ErrorMessage name='description' />
