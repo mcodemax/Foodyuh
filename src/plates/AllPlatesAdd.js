@@ -59,12 +59,13 @@ function AllPlatesAdd() {
 
   return (
     <div className='AllPlatesAdd'>
+      <p>Plates {console.log(currentUser)}</p>
       <div className='AllPlatesAdd-PlatesList'>
-        <p>Plates {console.log(currentUser)}</p>
+        
         {currentUser.plates
           ? currentUser.plates.map((plate) => {
               return (
-                <div className='AllPlatesAdd-Plate' key={`plate-${plate.id}`}>
+                <div className='plate' key={`plate-${plate.id}`}>
                   <a href={`/plates/${plate.id}`}>{plate.name}</a>
                   <p>{plate.description}</p>
                   <button onClick={() => deletePlate(plate.id)}>Remove Plate</button>

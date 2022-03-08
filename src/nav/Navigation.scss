@@ -1,0 +1,42 @@
+.Navigation {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #c7d6e6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
+  width: auto;
+  text-align: center !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .Navigation-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 50%;
+      height: auto;
+      box-sizing: border-box;
+      border-radius: 0.25rem;
+    }
+
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      text-align: left;
+
+      a {
+        text-decoration: none;
+        box-sizing: border-box;
+      }
+
+      a:visited {
+        text-decoration: none;
+        color: #c7d6e6;
+      }
+    }
+  }
+}

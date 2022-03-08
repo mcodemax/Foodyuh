@@ -15,6 +15,14 @@
   max-width: 720px;
   text-align: center !important;
 
+  .error p {
+    font-family: Geneva, sans-serif;
+    color: red;
+    box-sizing: border-box;
+    font-size: 10px;
+    height: 12px;
+  }
+
   .Login-form {
     display: flex;
     flex-direction: column;
@@ -52,7 +60,6 @@
     }
 
     button {
-      // box-sizing: border-box;
       text-decoration: none;
       display: inline-block;
       text-align: center;

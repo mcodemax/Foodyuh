@@ -43,7 +43,9 @@ function Login({ login }) {
             { loginErrors.length ? 
                 loginErrors.map(error => {
                     return (
-                        <div className="Login-failed">{error}</div> 
+                        <div className="Login-failed error">
+                            <p>{error}</p>
+                        </div> 
                     )
                 })
                 : ``
