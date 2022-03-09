@@ -66,6 +66,10 @@
     
 
     .AllPlatesAdd-form {
+        label {
+            box-sizing: border-box;
+            margin-right: 5px;
+        }
         
         .error {
             display: flex;

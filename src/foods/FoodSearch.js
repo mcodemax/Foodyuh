@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import FoodyuhApi from '../foodyuhApi';
+import './FoodSearch.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import UserContext from '../auth/UserContext';
 import { useNavigate } from 'react-router-dom';

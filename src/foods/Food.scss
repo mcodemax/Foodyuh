@@ -1,0 +1,53 @@
+.Food {
+    box-sizing: border-box;
+    max-width: 400px;
+    min-width: 350px;
+
+
+    img {
+        border-radius: 5px;
+    }
+    
+    button {
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        width: 100px;
+        user-select: none;
+        padding: 5px 5px;
+        font-size: 10px;
+        border-radius: 0.25rem;
+        color: #8678A5;
+        background-color: #2f293d;
+        border-color: #131018;
+        margin-top: 1rem !important;
+        font-weight: 600 !important;
+        cursor: pointer;
+    }
+
+    .plate {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 200px;
+        min-height: 200px;
+        max-height: 200px;
+        
+        a {
+            text-decoration: none;
+            box-sizing: border-box;
+            font-style: italic;
+            font-size: 20px;
+        }
+    
+        a:visited {
+            text-decoration: none;
+            color: #c7d6e6;
+            font-style: italic;
+        }
+
+        p {
+            font-size: 12px;
+        }
+    }
+}

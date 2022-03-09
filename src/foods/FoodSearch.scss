@@ -1,0 +1,34 @@
+.FoodSearch {
+    display: flex;
+    flex-direction: column;
+
+    .FoodSearch-foodslist {
+        margin: 0 auto;
+        max-width: 1200px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px 20px; /* row-gap column gap */
+    }
+    button {
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        width: 100px;
+        user-select: none;
+        padding: 0.3rem 0.75rem;
+        margin: 20px 30px;
+        font-size: 1rem;
+        border-radius: 0.25rem;
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        margin-top: 1rem !important;
+        font-weight: 600 !important;
+        cursor: pointer;
+      }
+}

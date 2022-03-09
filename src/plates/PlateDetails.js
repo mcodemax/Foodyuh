@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import UserContext from '../auth/UserContext';
-// import './PlateDetails.scss';
+import './PlateDetails.scss';
 import { useNavigate } from 'react-router-dom';
 import FoodyuhApi from '../foodyuhApi';
 import { v4 as uuidv4 } from 'uuid';
@@ -25,11 +25,6 @@ function PlateDetails() {
   const [plate, setPlate] = useState();
   const [totalNutrition, settotalNutrition] = useState(foodTotals);
   const navigate = useNavigate();
-  
-
-  //show all plates with foods in them in mini panels
-  //clicking on an indiv plate goes to PlateDetails
-  
 
   const initialValues = {
     name: '',
@@ -114,24 +109,26 @@ function PlateDetails() {
       <div className='PlateDetails-PlatesList'>
         {plate ? (
           <>
-            <p>{plate.name}</p>
-            <p>{plate.description}</p>
+            <p className='name'>{plate.name}</p>
+            <p className='description'>{plate.description}</p>
           </>
         ) : null}
         <p>Foods:</p>
-        {plate
-          ? plate.foods.map((food) => {
-              return (
-                <div
-                  className='PlateDetails-Food'
-                  key={`food-${food.fdcId}-${uuidv4()}`}
-                >
-                  <FoodForPlate food={food.details} plateId={plateId} setTotalNutrition={settotalNutrition} key={uuidv4()}/>
-                </div>
-              );
-            })
-          : <LoadingSpinner />}
-          <div className='PlateDetails-totalnutrition'>
+        <div className='food-list'>
+          {plate
+            ? plate.foods.map((food) => {
+                return (
+                  <div
+                    className='food'
+                    key={`food-${food.fdcId}-${uuidv4()}`}
+                  >
+                    <FoodForPlate food={food.details} plateId={plateId} setTotalNutrition={settotalNutrition} key={uuidv4()}/>
+                  </div>
+                );
+              })
+            : <LoadingSpinner />}
+          </div>
+          <div className='totalnutrition'>
             <p>Total Plate Nutrition:</p>
             <p>{totalNutrition[208].value} {totalNutrition[208].unitName}</p>
             <p>{totalNutrition[203].value} {totalNutrition[203].unitName} {totalNutrition[203].nutrientName}</p>

@@ -1,0 +1,28 @@
+.FoodForPlate {
+    box-sizing: border-box;
+    max-width: 400px;
+
+    img {
+        border-radius: 5px;
+    }
+    
+    button {
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        width: 100px;
+        user-select: none;
+        padding: 5px 5px;
+        font-size: 10px;
+        border-radius: 0.25rem;
+        color: #fff;
+        background-color: #df933c;
+        border-color: #e05e2b;
+        margin-top: 1rem !important;
+        font-weight: 600 !important;
+        cursor: pointer;
+    }
+
+    
+}

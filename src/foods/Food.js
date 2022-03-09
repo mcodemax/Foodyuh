@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import './Food.scss';
 import FoodyuhApi from '../foodyuhApi';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -46,14 +47,15 @@ function Food({food, plateId}) {
       //add data type for html, fdcId
       }
       <img src={food.image} alt="Food pic not avail"></img>
-      <span>Food Name: {`${food.description}`} </span>
+      <p>Food Name: {`${food.description}`} </p>
       {/* <span>Description: {`${food.lowercaseDescription}`} </span> */}
-      <span>Brand: {`${food.brandName}`} </span>
+      <p>Brand: {`${food.brandName}`} </p>
       {/* <span>Ingredients: {`${food.ingredients}`} </span> */}
       {/* desc and ingredients ommitted b/c fdcapi search vs getting indiv food details returs 
       differing data */}
       <div>
-        Nutrient Profile: {nutrientDisplay(food.foodNutrients)}
+        <b>Nutrient Profile:</b>
+        {nutrientDisplay(food.foodNutrients)}
       </div>
       <span></span>
       <span></span>

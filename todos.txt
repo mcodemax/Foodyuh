@@ -26,8 +26,10 @@ current::
 
 3/4/22 AllPlatesAddError Styling won't align at the center.
         implement plate removal
-            
+        maybe relate remove foods impletementation for delete plates implementation
 
+3/8/22 FoodForPlate.js maybe add error msg if foodcan't be deleted; 
+        need state added or something
 fix styling on signUpForm
             lessons:
           //don't try to mutate an object's values while you're rendering elements or expected behavoir can happen 

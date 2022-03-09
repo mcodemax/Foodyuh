@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import FoodyuhApi from '../foodyuhApi';
 import { v4 as uuidv4 } from 'uuid';
+import './FoodForPlate.scss';
 
 function FoodForPlate({ food, plateId, setTotalNutrition }) {
   // const getFood = async () => {
@@ -17,7 +18,7 @@ function FoodForPlate({ food, plateId, setTotalNutrition }) {
     try {
       const res = FoodyuhApi.deleteFood(fdcId, plateId);
     } catch (error) {
-      console.log(error);
+      console.log(error); 
     }
   };
 
@@ -40,9 +41,7 @@ function FoodForPlate({ food, plateId, setTotalNutrition }) {
       <img src={food.image} alt='Food pic not avail'></img>
       <div>Food Name: {`${food.description.toLowerCase()}`} </div>
       <div>Brand: {`${food.brandOwner}`} </div>
-      <div>Nutrient Profile: {nutrientDisplay(food.foodNutrients)}</div>
-      <span></span>
-      <span></span>
+      <div><b>Nutrient Profile:</b> {nutrientDisplay(food.foodNutrients)}</div>
 
       <button onClick={() => removeFood(food.fdcId, plateId)}>
         Remove Food
