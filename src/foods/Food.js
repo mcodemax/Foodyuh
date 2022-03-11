@@ -24,7 +24,6 @@ function Food({food, plateId}) {
   }
 
   const nutrientDisplay = (foodNutrients) => {
-    // list nutrientName, : value, unitName  
     return (
       <>
       {foodNutrients.map(nutrient => {
@@ -48,11 +47,8 @@ function Food({food, plateId}) {
       }
       <img src={food.image} alt="Food pic not avail"></img>
       <p>Food Name: {`${food.description}`} </p>
-      {/* <span>Description: {`${food.lowercaseDescription}`} </span> */}
       <p>Brand: {`${food.brandName}`} </p>
-      {/* <span>Ingredients: {`${food.ingredients}`} </span> */}
-      {/* desc and ingredients ommitted b/c fdcapi search vs getting indiv food details returs 
-      differing data */}
+
       <div>
         <b>Nutrient Profile:</b>
         {nutrientDisplay(food.foodNutrients)}

@@ -86,11 +86,6 @@ function FoodSearch({plateId}) {
               return (
                 <>
                   <Food food={food} plateId={plateId} key={uuidv4()}/>
-                  {/*
-                      let's keep secret html value:
-                      fdcId
-                      maybe not?^
-                  */}
                 </>
               );
             }) : null}

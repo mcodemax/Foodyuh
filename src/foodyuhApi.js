@@ -133,9 +133,9 @@ class FoodyuhApi {
     return res.plate;
   }
 
-  /** Delete plate */
+  /** Delete plate; works */
   static async deletePlate(plateId) {
-    let res = await this.request(`plates/delete/${plateId}`, 'delete');
+    let res = await this.request(`plates/delete/${plateId}`, {}, 'delete');
     return res.deletedPlate;
   }
 }

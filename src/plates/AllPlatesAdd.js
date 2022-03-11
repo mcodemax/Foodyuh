@@ -10,10 +10,8 @@ import { v4 as uuidv4 } from 'uuid';
 /** Shows all existing plates & has a form to add plates */
 function AllPlatesAdd() {
   const { currentUser } = useContext(UserContext);
-  const [changeInfoErrors, setChangeInfoErrors] = useState([]); //implement later
+  const [changeInfoErrors, setChangeInfoErrors] = useState([]);
   const navigate = useNavigate();
-
-  //clicking on an indiv plate goes to PlateDetails
 
   const initialValues = {
     name: '',
@@ -37,6 +35,7 @@ function AllPlatesAdd() {
         const res = await FoodyuhApi.addPlate(values.name, values.description);
         navigate(`/plates/${res.id}`, { replace: true });
         //after successful plate made go to specific plate where you can add foods
+          //above successfully implemented
         //also need to update the userinfo and make another api call and update state in top level app component
             //see implementation going to be similiar to implementation of this inProfilePage.js component
 
@@ -53,7 +52,7 @@ function AllPlatesAdd() {
       const res = await FoodyuhApi.deletePlate(plateId);
       navigate(`/plates`, { replace: true });
     } catch (error) {
-      setChangeInfoErrors(error); //trouble shoot later how to actuallyy display these properly
+      setChangeInfoErrors(error);
     }
   };
 
@@ -70,7 +69,6 @@ function AllPlatesAdd() {
                   <p>{plate.description}</p>
                   <button onClick={() => deletePlate(plate.id)}>Remove Plate</button>
                 </div>
-                // add a hyperlink tag to navigate to indiv plate details
               );
             })
           : null}
@@ -81,7 +79,7 @@ function AllPlatesAdd() {
           ? changeInfoErrors.map((error) => {
               return (
                 <div className='error' key={uuidv4()}>
-                  <p>{error}. Try adding a plate with a different name.</p>
+                  <p>{error}</p>
                 </div>
               );
             })

@@ -66,12 +66,7 @@ maybe refactor errors returned in backend?)
 
 
 done:
--make profile page component and foodyuhAPI to connect to /users in backend and change info
-        Bug(nox fixed): 1.Reload Profile page
-        2. type in info and update it=>new userinfo corrrectly reflected  in UI, but
-            no "Info Change successful!" is shown
-        3. type in info and update it a second time=>a "Info Change Successful!" is flashed.
-            but it does not change userinfo correctly in UI now
+
         ***
         -I'm changing my local state(changeInfoErrors) which causes the component to rerender
         -setting state is async so changeInfoErrors will become undefined when the component rerenders while the state is being set

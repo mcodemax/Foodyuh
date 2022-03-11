@@ -4,21 +4,14 @@ import { v4 as uuidv4 } from 'uuid';
 import './FoodForPlate.scss';
 
 function FoodForPlate({ food, plateId, setTotalNutrition }) {
-  // const getFood = async () => {
-  //   try {
-  //     const res = await FoodyuhApi.getFoodbyFdcId(plateId);
-  //     setPlate(res);
-  //   } catch (error) {
-  //     console.error('App plateInfo: problem loading', error);
-  //     setChangeInfoErrors(error); //trouble shoot later how to actuallyy display these properly
-  //   }
-  //   setPlateInfoLoaded(true);
-  // };
+  const [foodPlateErrors, setFoodPlateErrors] = useState([]);
+
   const removeFood = async (fdcId, plateId) => {
     try {
-      const res = FoodyuhApi.deleteFood(fdcId, plateId);
+      const res = await FoodyuhApi.deleteFood(fdcId, plateId);
+      console.log(res);
     } catch (error) {
-      console.log(error); 
+      setFoodPlateErrors(error);
     }
   };
 
@@ -38,6 +31,15 @@ function FoodForPlate({ food, plateId, setTotalNutrition }) {
 
   return (
     <div className='FoodForPlate'>
+      {foodPlateErrors.length
+          ? foodPlateErrors.map((error) => {
+              return (
+                <div className='error' key={uuidv4()}>
+                  <p>{error}</p>
+                </div>
+              );
+            })
+          : ``}
       <img src={food.image} alt='Food pic not avail'></img>
       <div>Food Name: {`${food.description.toLowerCase()}`} </div>
       <div>Brand: {`${food.brandOwner}`} </div>
