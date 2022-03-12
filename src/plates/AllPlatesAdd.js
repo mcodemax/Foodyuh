@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 /** Shows all existing plates & has a form to add plates */
 function AllPlatesAdd() {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setUserInfoUpdated } = useContext(UserContext);
   const [changeInfoErrors, setChangeInfoErrors] = useState([]);
   const navigate = useNavigate();
 
@@ -33,6 +33,8 @@ function AllPlatesAdd() {
 
     try {
         const res = await FoodyuhApi.addPlate(values.name, values.description);
+        setUserInfoUpdated(true);
+        setUserInfoUpdated(null);
         navigate(`/plates/${res.id}`, { replace: true });
         //after successful plate made go to specific plate where you can add foods
           //above successfully implemented
@@ -48,8 +50,9 @@ function AllPlatesAdd() {
 
   const deletePlate = async (plateId) => {
     try {
-      console.log('aoiwfaowuf')
       const res = await FoodyuhApi.deletePlate(plateId);
+      setUserInfoUpdated(true);
+      setUserInfoUpdated(null);
       navigate(`/plates`, { replace: true });
     } catch (error) {
       setChangeInfoErrors(error);

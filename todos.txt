@@ -28,8 +28,6 @@ current::
         implement plate removal
         maybe relate remove foods impletementation for delete plates implementation
 
-3/8/22 FoodForPlate.js maybe add error msg if foodcan't be deleted; 
-        need state added or something
 fix styling on signUpForm
             lessons:
           //don't try to mutate an object's values while you're rendering elements or expected behavoir can happen 
@@ -53,8 +51,6 @@ FoodSearch.js Error handling complete
     -make plate add f() in foodyuhAPI, done
     -add hyperlink to specific plate in loop inside component to access plate specific compoentn for each plate
 
-    bug:
-    once a plate is submitted, and going back to list of all plates, the plate doesn't show
     
 -make plate specific Component
     -make sure userstate changes in compoenent by making api call 

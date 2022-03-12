@@ -3,6 +3,25 @@
     max-width: 400px;
     min-width: 300px;
 
+    .error {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        box-sizing: border-box;
+        p {
+            font-family: Geneva, sans-serif;
+            font-size: 10px;
+            color: red;
+            margin-top: 20px;
+            margin-bottom: 0px;
+            box-sizing: border-box;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            
+        }
+    }
+
     img {
         border-radius: 5px;
     }

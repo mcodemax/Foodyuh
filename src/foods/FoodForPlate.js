@@ -1,15 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
 import FoodyuhApi from '../foodyuhApi';
 import { v4 as uuidv4 } from 'uuid';
+import UserContext from '../auth/UserContext';
 import './FoodForPlate.scss';
 
 function FoodForPlate({ food, plateId, setTotalNutrition }) {
   const [foodPlateErrors, setFoodPlateErrors] = useState([]);
+  const { setUserInfoUpdated } = useContext(UserContext);
 
   const removeFood = async (fdcId, plateId) => {
     try {
       const res = await FoodyuhApi.deleteFood(fdcId, plateId);
+      setUserInfoUpdated(true);
+      setUserInfoUpdated(null);
       console.log(res);
+      
     } catch (error) {
       setFoodPlateErrors(error);
     }

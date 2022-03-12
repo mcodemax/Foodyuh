@@ -110,8 +110,6 @@ function App() {
     setInfoLoaded(false);
     getCurrentUser();
   }, [token, userInfoUpdated]); //might need to update currentUser when updating plates/foods
-  //bug above^ in ProfilePage component, this only runs once after initial form submissions
-  // and no longer for submissions following the initial
 
   if (!infoLoaded) return <>{`WE LOADING`}</>;
 

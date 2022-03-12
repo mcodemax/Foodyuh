@@ -19,7 +19,7 @@ import LoadingSpinner from '../LoadingSpinner';
 /** Shows all existing plates & has a form to add plates */
 function PlateDetails() {
   const { plateId } = useParams(); //https://ui.dev/react-router-url-parameters
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setUserInfoUpdated } = useContext(UserContext);
   const [errors, setErrors] = useState([]); //implement later
   const [plateInfoLoaded, setPlateInfoLoaded] = useState(false);
   const [plate, setPlate] = useState();

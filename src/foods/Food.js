@@ -1,25 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './Food.scss';
 import FoodyuhApi from '../foodyuhApi';
+import UserContext from '../auth/UserContext';
 import { v4 as uuidv4 } from 'uuid';
 
-
 function Food({food, plateId}) {
-  // const getFood = async () => {
-  //   try {
-  //     const res = await FoodyuhApi.getFoodbyFdcId(plateId);
-  //     setPlate(res);
-  //   } catch (error) {
-  //     console.error('App plateInfo: problem loading', error);
-  //     setChangeInfoErrors(error); //trouble shoot later how to actuallyy display these properly
-  //   }
-  //   setPlateInfoLoaded(true);
-  // };
+  const [foodPlateErrors, setFoodPlateErrors] = useState([]);
+  const { setUserInfoUpdated } = useContext(UserContext);
+
   const addFoodtoPlate = async (fdcId, plateId) => {
     try {
-      const res = FoodyuhApi.addFood(fdcId.toString(), plateId);
+      const res = await FoodyuhApi.addFood(fdcId.toString(), plateId);
+      setUserInfoUpdated(true);
+      setUserInfoUpdated(null);
     } catch (error) {
-      console.log(error)
+      setFoodPlateErrors(error);
     }
   }
 
@@ -42,9 +37,15 @@ function Food({food, plateId}) {
   //for styling we want to make this into a card and center it.
   return (
     <div className='Food' >
-      {console.log(food)
-      //add data type for html, fdcId
-      }
+      {foodPlateErrors.length
+          ? foodPlateErrors.map((error) => {
+              return (
+                <div className='error' key={uuidv4()}>
+                  <p>{error}</p>
+                </div>
+              );
+            })
+          : ``}
       <img src={food.image} alt="Food pic not avail"></img>
       <p>Food Name: {`${food.description}`} </p>
       <p>Brand: {`${food.brandName}`} </p>
