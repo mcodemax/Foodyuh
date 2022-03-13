@@ -16,7 +16,7 @@ Description: A website where users can create a several plates or "Portfolios" o
 
 
 ### APIs used: 
-1. Alpha Vantage:
+1. FoodData Central API:
     - Root URL: https://fdc.nal.usda.gov/
     - [Docs](https://fdc.nal.usda.gov/api-guide.html)
 2. Pexels:
