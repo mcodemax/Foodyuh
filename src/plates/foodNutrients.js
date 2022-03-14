@@ -1,7 +1,5 @@
 export const foodTotals = {
-  //maybe have
   208: {
-    //nutrientNumber
     nutrientName: 'Energy',
     unitName: 'KCAL',
     value: 0,
@@ -12,7 +10,6 @@ export const foodTotals = {
     value: 0,
   },
   203: {
-    //prot
     nutrientName: 'Protein',
     unitName: 'G',
     value: 0,

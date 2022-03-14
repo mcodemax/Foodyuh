@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 function ProfilePage() {
   const { currentUser, setUserInfoUpdated, setShowMessage, showMessage } =
     useContext(UserContext);
-  const [changeInfoErrors, setChangeInfoErrors] = useState([]); //implement later
+  const [changeInfoErrors, setChangeInfoErrors] = useState([]);
 
   const initialValues = {
     firstName: '',
@@ -91,7 +91,7 @@ function ProfilePage() {
       setChangeInfoErrors(error);
       resetForm({});
     }
-    // https://github.com/jaredpalmer/formik/issues/446
+    
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
   BrowserRouter,
   Route,
@@ -18,9 +18,6 @@ import PlateDetails from '../plates/PlateDetails';
 function Navigation(params) {
   const {
     currentUser,
-    setCurrentUser,
-    plateIds,
-    setPlateIds,
     login,
     logout,
     signUp,
@@ -31,8 +28,6 @@ function Navigation(params) {
       <BrowserRouter>
         <NavBar logout={logout} />
         <Routes>
-          {' '}
-          {/* replaces <Switch> in v6*/}
           <Route
             exact='true'
             path='/'
@@ -82,9 +77,6 @@ function Navigation(params) {
               currentUser ? <AllPlatesAdd /> : <Navigate replace to='/' />
             }
           />
-          {/* <Route exact="true" path="/plates/addfood" element={
-                        currentUser ? <AddFoodList /> : <Navigate replace to="/" />
-                }/> */}
           <Route
             path='/plates/:plateId'
             element={
@@ -102,12 +94,6 @@ function Navigation(params) {
             }
           />
           <Route path='*' element={<Navigate replace to='/' />} />
-          {/*
-            When no other route matches the URL, you can render a "not found"
-            route using path="*". This route will match any URL, but
-            will have the weakest precedence so the router will only pick it
-            if no other routes match.
-            */}
         </Routes>
       </BrowserRouter>
     </div>

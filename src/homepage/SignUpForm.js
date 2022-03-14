@@ -53,9 +53,6 @@ const SignUpForm = ({ signUp }) => {
   });
 
   const onSubmit = async (values, { resetForm }) => {
-    console.debug('In SignUpForm.js, onSubmit');
-    console.log('Form Data: ', values); //comment out later so password not revealed
-
     //a copy of values object is made so this component does not become uncontrolled
     const valuesCopy = { ...values };
     delete valuesCopy.confirmPassword;
@@ -63,17 +60,11 @@ const SignUpForm = ({ signUp }) => {
     const res = await signUp(valuesCopy);
 
     if (res.success) {
-      //maybe make success banner if true in html
       navigate('/user/profile');
-
-      //see bug in todos
     } else {
       setSignUpErrors(res.errors); //trouble shoot later how to actuallyy display these properly
       resetForm({});
     }
-    //if login fail show error message and navigate back2Login
-
-    // https://github.com/jaredpalmer/formik/issues/446
   };
 
   return (
@@ -94,7 +85,6 @@ const SignUpForm = ({ signUp }) => {
           onSubmit={onSubmit}
         >
           <>
-            {/* Formik component can only have one child. */}
             <p>SIGN UP!</p>
             <Form className='SignUpForm-form'>
               <div className='SignUpForm-username field'>

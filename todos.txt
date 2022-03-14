@@ -45,21 +45,14 @@ FoodSearch.js Error handling complete
                 and a seperate FoodForPlate Component
 
 
--make sure plates and username state added when a food is added to a plate
 
--make plate summary component 
-    -make plate add f() in foodyuhAPI, done
-    -add hyperlink to specific plate in loop inside component to access plate specific compoentn for each plate
-
-    
--make plate specific Component
-    -make sure userstate changes in compoenent by making api call 
-    -make sure specific plate is called by api to get all indiv foods
-
-
--make sign up component (done but server errors say instance.blah ned to be more chars from backend
-maybe refactor errors returned in backend?)
-
+/* this is a plate
+      {
+				"id": 3,
+				"name": "Pasta3",
+				"description": "for Engliand"
+			}
+  */
 
 done:
 
@@ -129,3 +122,13 @@ Component that list all plates
 {<Message message={error}></Message>}
 
 Promise.allSettled => returns promise after all promises returned or rejected
+
+
+/**
+   * How to signUp:
+   * example userObj:
+   * { "username":"Fname1", "password":"passy1", "firstName":"Adam", "lastName":"Ant", "email":"Adam@smolboi.net" }
+   *
+   */
+
+   // https://github.com/jaredpalmer/formik/issues/446 formik issues

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import UserContext from '../auth/UserContext';
@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 /** Shows all existing plates & has a form to add plates */
 function AllPlatesAdd() {
-  const { currentUser, setUserInfoUpdated } = useContext(UserContext);
+  const { currentUser, setUserInfoUpdated, userInfoUpdated } = useContext(UserContext);
   const [changeInfoErrors, setChangeInfoErrors] = useState([]);
   const navigate = useNavigate();
 
@@ -29,23 +29,21 @@ function AllPlatesAdd() {
       .required('Required'),
   });
 
-  const onSubmit = async (values, { resetForm }) => {
+  useEffect(() => {
+    if (userInfoUpdated) {
+      setUserInfoUpdated(false);
+    }
+  }, [userInfoUpdated]);
 
+  const onSubmit = async (values, { resetForm }) => {
     try {
         const res = await FoodyuhApi.addPlate(values.name, values.description);
         setUserInfoUpdated(true);
-        setUserInfoUpdated(null);
         navigate(`/plates/${res.id}`, { replace: true });
-        //after successful plate made go to specific plate where you can add foods
-          //above successfully implemented
-        //also need to update the userinfo and make another api call and update state in top level app component
-            //see implementation going to be similiar to implementation of this inProfilePage.js component
-
     } catch (error) {
-        setChangeInfoErrors(error); //trouble shoot later how to actuallyy display these properly
+        setChangeInfoErrors(error); 
         resetForm({});
     }
-    // https://github.com/jaredpalmer/formik/issues/446
   };
 
   const deletePlate = async (plateId) => {
@@ -61,7 +59,7 @@ function AllPlatesAdd() {
 
   return (
     <div className='AllPlatesAdd'>
-      <p>Plates {console.log(currentUser)}</p>
+      <p>Plates</p>
       <div className='AllPlatesAdd-PlatesList'>
         
         {currentUser.plates

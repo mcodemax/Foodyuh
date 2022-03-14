@@ -6,26 +6,15 @@ import Navigation from './nav/Navigation';
 import FoodyuhApi from './foodyuhApi';
 import UserContext from './auth/UserContext';
 
-// Key name for storing token in localStorage for "remember me" re-login
 export const TOKEN_STORAGE_ID = 'foodyuh-token';
 
-//make api call back end for token, store token as state
 function App() {
-  // console.log(FoodyuhApi.getImages('fight78t67gbyv7658').then(e => console.log(e)))
-  // console.log(FoodyuhApi.addPlate('linguini9', 'spicy meat bol').then(e => console.log(e)))
   const [infoLoaded, setInfoLoaded] = useState(false);
-  const [userInfoUpdated, setUserInfoUpdated] = useState(null); //used when plates are added or userinfo changed
+  const [userInfoUpdated, setUserInfoUpdated] = useState(false); //used when plates are added or userinfo changed
   const [currentUser, setCurrentUser] = useState(null);
   const [showMessage, setShowMessage] = useState('');
-  // ^store credentials in state
-  const [plateIds, setPlateIds] = useState([]); // maybe change to plateIds or food_plate ids
-  /* this is a plate
-      {
-				"id": 3,
-				"name": "Pasta3",
-				"description": "for Engliand"
-			}
-  */
+  const [plateIds, setPlateIds] = useState([]);
+  
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
 
   console.debug(
@@ -36,37 +25,26 @@ function App() {
     currentUser,
     'token=',
     token
-  );
+  );//maybe take off eventually
 
-  /**
-   * How to signUp:
-   * example userObj:
-   * { "username":"Fname1", "password":"passy1", "firstName":"Adam", "lastName":"Ant", "email":"Adam@smolboi.net" }
-   *
-   */
   async function signUp(userObj) {
     try {
-      console.log('in signup', userObj);
       let token = await FoodyuhApi.register(userObj); //need2check if works
       setToken(token);
       return { success: true };
     } catch (errors) {
-      console.error('signup failed', errors);
       return { success: false, errors };
     }
   }
 
-  /** Handles site-wide login.
-   *
-   * Make sure you await this function and check its return value!
-   */
+  /** Handles site-wide login. */
   async function login(username, password) {
     try {
       let token = await FoodyuhApi.login(username, password);
       setToken(token);
+
       return { success: true };
     } catch (errors) {
-      console.error('login failed', errors);
       return { success: false, errors };
     }
   }
@@ -87,17 +65,13 @@ function App() {
       if (token) {
         try {
           let { username } = jwt.decode(token);
-          // put the token on the Api class so it can use it to call the API.
           FoodyuhApi.token = token;
           let currentUser = await FoodyuhApi.getCurrentUser(username);
 
-          console.debug('In App.js getCurrentUser', currentUser);
           setCurrentUser(currentUser);
 
-          setPlateIds(currentUser.plates); // turn this into plate ids and
-          //possibly fdcIds  //above might be redundant code
+          setPlateIds(currentUser.plates);
         } catch (err) {
-          console.error('App loadUserInfo: problem loading', err);
           setCurrentUser(null);
         }
       }
@@ -109,9 +83,9 @@ function App() {
     // to false to control the spinner.
     setInfoLoaded(false);
     getCurrentUser();
-  }, [token, userInfoUpdated]); //might need to update currentUser when updating plates/foods
+  }, [token, userInfoUpdated]); 
 
-  if (!infoLoaded) return <>{`WE LOADING`}</>;
+  if (!infoLoaded) return <>{`WE LOADING`}</>; //change to a better loading icon
 
   return (
     <UserContext.Provider

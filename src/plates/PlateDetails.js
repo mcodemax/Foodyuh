@@ -1,9 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import * as Yup from 'yup';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import UserContext from '../auth/UserContext';
 import './PlateDetails.scss';
-import { useNavigate } from 'react-router-dom';
 import FoodyuhApi from '../foodyuhApi';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams } from 'react-router-dom';
@@ -18,13 +16,12 @@ import LoadingSpinner from '../LoadingSpinner';
 
 /** Shows all existing plates & has a form to add plates */
 function PlateDetails() {
-  const { plateId } = useParams(); //https://ui.dev/react-router-url-parameters
+  const { plateId } = useParams();
   const { currentUser, setUserInfoUpdated } = useContext(UserContext);
-  const [errors, setErrors] = useState([]); //implement later
+  const [errors, setErrors] = useState([]);
   const [plateInfoLoaded, setPlateInfoLoaded] = useState(false);
   const [plate, setPlate] = useState();
   const [totalNutrition, settotalNutrition] = useState(foodTotals);
-  const navigate = useNavigate();
 
   const initialValues = {
     name: '',
@@ -32,16 +29,12 @@ function PlateDetails() {
   };
 
   useEffect(async () => {
-    console.debug('PlateDetails useEffect loadPlateInfo', 'plate=', 'idk');
-
     let foodDetailsPromises = [];
     let foodsPexelImagesPromises = [];
     setPlateInfoLoaded(false);
 
     try {
       const res = await FoodyuhApi.getPlate(plateId);
-      //loop thru and for each food do like food.nurtitionInfo = nutritioninforeturns
-      // and food.picture = whatever returns from pexels api call[0]
       res.foods.forEach((food) => {
         foodDetailsPromises.push(FoodyuhApi.getFoodbyFdcId(food.fdcId));
       });
@@ -53,26 +46,18 @@ function PlateDetails() {
 
       res.foods.forEach((food) => {
         foodsPexelImagesPromises.push(FoodyuhApi.getImages(food.details.description));
-        console.log(food.details.description);
       });
 
       const resFoodsPexelImages = await Promise.all(foodsPexelImagesPromises);
-      console.log(resFoodsPexelImages)
       res.foods.forEach((food, idx) => {
         food.details.image = resFoodsPexelImages[idx][0].src.small;
-        console.log(resFoodsPexelImages[idx])
       });
-
-      console.log('res asfter dets', res);
 
       setPlate(res);
     } catch (error) {
-      console.error('App plateInfo: problem loading', error);
       setErrors(error); //trouble shoot later how to actuallyy display these properly
     }
-  }, [currentUser]); //maybe make dependent on some vars that updates after adding an fdcid food
-  //currentUser or something that gets modified once adding a food,
-  //maybe add a isModified variable
+  }, [currentUser]);
 
   useEffect(() => {
     if (plate) { //because plate's initial state is null
