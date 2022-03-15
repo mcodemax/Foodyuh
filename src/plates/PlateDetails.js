@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import * as Yup from 'yup';
 import UserContext from '../auth/UserContext';
 import './PlateDetails.scss';
 import FoodyuhApi from '../foodyuhApi';
@@ -10,23 +9,17 @@ import FoodForPlate from '../foods/FoodForPlate';
 import { foodTotals } from './foodNutrients';
 import LoadingSpinner from '../LoadingSpinner';
 
-
 //when user adds a plate foodyuhapi.addPlate(name, description) is called, plate is returned
 //they get redirected to the returned plate specific page where they can add foods
 
 /** Shows all existing plates & has a form to add plates */
 function PlateDetails() {
   const { plateId } = useParams();
-  const { currentUser, setUserInfoUpdated } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
   const [errors, setErrors] = useState([]);
   const [plateInfoLoaded, setPlateInfoLoaded] = useState(false);
   const [plate, setPlate] = useState();
   const [totalNutrition, settotalNutrition] = useState(foodTotals);
-
-  const initialValues = {
-    name: '',
-    description: '',
-  };
 
   useEffect(async () => {
     let foodDetailsPromises = [];
@@ -45,7 +38,9 @@ function PlateDetails() {
       });
 
       res.foods.forEach((food) => {
-        foodsPexelImagesPromises.push(FoodyuhApi.getImages(food.details.description));
+        foodsPexelImagesPromises.push(
+          FoodyuhApi.getImages(food.details.description)
+        );
       });
 
       const resFoodsPexelImages = await Promise.all(foodsPexelImagesPromises);
@@ -55,39 +50,25 @@ function PlateDetails() {
 
       setPlate(res);
     } catch (error) {
-      setErrors(error); //trouble shoot later how to actuallyy display these properly
+      setErrors(error);
     }
   }, [currentUser]);
 
   useEffect(() => {
-    if (plate) { //because plate's initial state is null
+    if (plate) {
+      //because plate's initial state is null
       setPlateInfoLoaded(true);
       const accumFoodTotals = JSON.parse(JSON.stringify(foodTotals));
 
-      plate.foods.forEach( food => {
-        food.details.foodNutrients.forEach( nutrient => {
-          const nutrientNumber = nutrient.number;
-          accumFoodTotals[nutrient.number].value+=nutrient.amount;
+      plate.foods.forEach((food) => {
+        food.details.foodNutrients.forEach((nutrient) => {
+          accumFoodTotals[nutrient.number].value += nutrient.amount;
         });
       });
 
       settotalNutrition(accumFoodTotals);
     }
   }, [plate]);
-
-  
-  const validationSchema = Yup.object({
-    name: Yup.string()
-      .min(1)
-      .max(255, 'Max plate name length is 255 characters')
-      .required('Required'),
-    description: Yup.string()
-      .min(1)
-      .max(255, 'Max plate description length is 255 characters')
-      .required('Required'),
-  });
-
-  const onSubmit = async (values, { resetForm }) => {};
 
   return (
     <div className='PlateDetails'>
@@ -100,29 +81,57 @@ function PlateDetails() {
         ) : null}
         <p>Foods:</p>
         <div className='food-list'>
-          {plate
-            ? plate.foods.map((food) => {
-                return (
-                  <div
-                    className='food'
-                    key={`food-${food.fdcId}-${uuidv4()}`}
-                  >
-                    <FoodForPlate food={food.details} plateId={plateId} setTotalNutrition={settotalNutrition} key={uuidv4()}/>
-                  </div>
-                );
-              })
-            : <LoadingSpinner />}
-          </div>
+          {plate ? (
+            plate.foods.map((food) => {
+              return (
+                <div className='food' key={`food-${food.fdcId}-${uuidv4()}`}>
+                  <FoodForPlate
+                    food={food.details}
+                    plateId={plateId}
+                    setTotalNutrition={settotalNutrition}
+                    key={uuidv4()}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <LoadingSpinner />
+          )}
+        </div>
+        {plateInfoLoaded ? (
           <div className='totalnutrition'>
             <p>Total Plate Nutrition:</p>
-            <p>{totalNutrition[208].value} {totalNutrition[208].unitName}</p>
-            <p>{totalNutrition[203].value} {totalNutrition[203].unitName} {totalNutrition[203].nutrientName}</p>
-            <p>{totalNutrition[205].value} {totalNutrition[205].unitName} {totalNutrition[205].nutrientName}</p>
-            <p>{totalNutrition[204].value} {totalNutrition[204].unitName} {totalNutrition[204].nutrientName}</p>
-            <p>{totalNutrition[291].value} {totalNutrition[291].unitName} {totalNutrition[291].nutrientName}</p>
-            <p>{totalNutrition[401].value} {totalNutrition[401].unitName} {totalNutrition[401].nutrientName}</p>
-            <p>{totalNutrition[301].value} {totalNutrition[301].unitName} {totalNutrition[301].nutrientName}</p>
+            <p>
+              {totalNutrition[208].value} {totalNutrition[208].unitName}
+            </p>
+            <p>
+              {totalNutrition[203].value} {totalNutrition[203].unitName}{' '}
+              {totalNutrition[203].nutrientName}
+            </p>
+            <p>
+              {totalNutrition[205].value} {totalNutrition[205].unitName}{' '}
+              {totalNutrition[205].nutrientName}
+            </p>
+            <p>
+              {totalNutrition[204].value} {totalNutrition[204].unitName}{' '}
+              {totalNutrition[204].nutrientName}
+            </p>
+            <p>
+              {totalNutrition[291].value} {totalNutrition[291].unitName}{' '}
+              {totalNutrition[291].nutrientName}
+            </p>
+            <p>
+              {totalNutrition[401].value} {totalNutrition[401].unitName}{' '}
+              {totalNutrition[401].nutrientName}
+            </p>
+            <p>
+              {totalNutrition[301].value} {totalNutrition[301].unitName}{' '}
+              {totalNutrition[301].nutrientName}
+            </p>
           </div>
+        ) : (
+          ''
+        )}
       </div>
 
       <div className='PlateDetails-form'>
@@ -135,9 +144,9 @@ function PlateDetails() {
               );
             })
           : ``}
-          <>
-            <FoodSearch plateId={plateId} />
-          </>
+        <>
+          <FoodSearch plateId={plateId} />
+        </>
       </div>
     </div>
   );

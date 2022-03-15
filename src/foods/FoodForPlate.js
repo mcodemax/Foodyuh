@@ -10,7 +10,7 @@ function FoodForPlate({ food, plateId }) {
 
   const removeFood = async (fdcId, plateId) => {
     try {
-      const res = await FoodyuhApi.deleteFood(fdcId, plateId);
+      await FoodyuhApi.deleteFood(fdcId, plateId);
       setUserInfoUpdated(true);
     } catch (error) {
       setFoodPlateErrors(error);
@@ -21,7 +21,7 @@ function FoodForPlate({ food, plateId }) {
     if (userInfoUpdated) {
       setUserInfoUpdated(false);
     }
-  }, [userInfoUpdated]);
+  }, [userInfoUpdated, setUserInfoUpdated]);
 
   const nutrientDisplay = (foodNutrients) => {
     return (

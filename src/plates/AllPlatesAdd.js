@@ -33,7 +33,7 @@ function AllPlatesAdd() {
     if (userInfoUpdated) {
       setUserInfoUpdated(false);
     }
-  }, [userInfoUpdated]);
+  }, [userInfoUpdated, setUserInfoUpdated]);
 
   const onSubmit = async (values, { resetForm }) => {
     try {
@@ -48,7 +48,7 @@ function AllPlatesAdd() {
 
   const deletePlate = async (plateId) => {
     try {
-      const res = await FoodyuhApi.deletePlate(plateId);
+      await FoodyuhApi.deletePlate(plateId);
       setUserInfoUpdated(true);
       setUserInfoUpdated(null);
       navigate(`/plates`, { replace: true });

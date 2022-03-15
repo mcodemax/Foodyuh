@@ -10,7 +10,7 @@ function Food({ food, plateId }) {
 
   const addFoodtoPlate = async (fdcId, plateId) => {
     try {
-      const res = await FoodyuhApi.addFood(fdcId.toString(), plateId);
+      await FoodyuhApi.addFood(fdcId.toString(), plateId);
       setUserInfoUpdated(true);
     } catch (error) {
       setFoodPlateErrors(error);
@@ -21,7 +21,7 @@ function Food({ food, plateId }) {
     if (userInfoUpdated) {
       setUserInfoUpdated(false);
     }
-  }, [userInfoUpdated]);
+  }, [userInfoUpdated, setUserInfoUpdated]);
 
   const nutrientDisplay = (foodNutrients) => {
     return (
