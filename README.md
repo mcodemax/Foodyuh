@@ -1,5 +1,5 @@
 # Foodyuh
-A portfolio. For your diet.
+Make and analyze your plate.
 ###### Developer: Maxwell Johnson
 
 [Link to Foodyuh](https://github.com/mcodemax/Foodyuh#readme) 
@@ -11,9 +11,8 @@ Description: A website where users can create a several plates or "Portfolios" o
     
 ### Basic user flow:
 1. User must create a Foodyuh account to use Foodyuh. 
-2. After registering, users can create meals made of > plates make of > individual foods.
-3. Following plate creation users can combine different plates they have made and add them to different meals they have in their account.
-
+2. After registering, users can create plates made of > individual foods.
+3. Within a plate a user can see the nutritional summary of a plate.
 
 ### APIs used: 
 1. FoodData Central API:
@@ -24,12 +23,12 @@ Description: A website where users can create a several plates or "Portfolios" o
     - [Docs](https://www.pexels.com/api/documentation/)
     
 ### Tech stack:
-- Front-end: HTML, CSS, JS, React, Axios, Bootstrap, Font Awesome, Formik
-- Backend: Express, WTForms, Bcrypt
+- Front-end: HTML, Sass, JS, React, Axios, Formik
+- Backend: Node.js, Express, Bcrypt
 - Database: PostgresQL
 - Deployment: Heroku
 
-To access required tools, run the following in terminal:
+To install required frontend depen, run the following in terminal:
 
 `python3 -m venv venv`
 

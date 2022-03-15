@@ -132,3 +132,6 @@ Promise.allSettled => returns promise after all promises returned or rejected
    */
 
    // https://github.com/jaredpalmer/formik/issues/446 formik issues
+
+
+  //GET requests don't have a request body

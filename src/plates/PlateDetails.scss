@@ -1,99 +1,96 @@
 .PlateDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p.name {
+    font-size: 35px;
+    font-style: italic;
+    box-sizing: border-box;
+  }
+
+  p.description {
+    font-size: 15px;
+    color: #a8abad;
+  }
+
+  .food-list {
+    margin: 0 auto;
+    max-width: 1200px;
+
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px 20px; /* row-gap column gap */
+  }
 
-    p.name {
-        font-size: 35px;
-        font-style: italic;
+  .totalnutrition p {
+    color: #df933c;
+  }
+
+  .AllPlatesAdd-form {
+    label {
+      box-sizing: border-box;
+      margin-right: 5px;
+    }
+
+    .error {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      box-sizing: border-box;
+      p {
+        font-family: Geneva, sans-serif;
+        font-size: 10px;
+        color: red;
+        margin-top: 20px;
+        margin-bottom: 0px;
         box-sizing: border-box;
-    }
-
-    p.description {
-        font-size: 15px;
-        color: #a8abad;
-    }
-
-    .food-list {
-        margin: 0 auto;
-        max-width: 1200px;
-
+        width: 200px;
         display: flex;
         justify-content: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px 20px; /* row-gap column gap */
+      }
     }
 
-    .totalnutrition p {
-        color: #df933c;
+    .field {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-family: Geneva, sans-serif;
     }
-    
+  }
 
-    .AllPlatesAdd-form {
-        label {
-            box-sizing: border-box;
-            margin-right: 5px;
-        }
-        
-        .error {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            box-sizing: border-box;
-            p {
-                font-family: Geneva, sans-serif;
-                font-size: 10px;
-                color: red;
-                margin-top: 20px;
-                margin-bottom: 0px;
-                box-sizing: border-box;
-                width: 200px;
-                display: flex;
-                justify-content: center;
-                
-            }
-        }
-
-        .field {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            font-family: Geneva, sans-serif;
-        }
+  .PlateDetails-form {
+    label {
+      box-sizing: border-box;
+      margin-right: 5px;
     }
 
-    .PlateDetails-form {
-        label {
-            box-sizing: border-box;
-            margin-right: 5px;
-        }
-        
-        .error {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            box-sizing: border-box;
-            p {
-                font-family: Geneva, sans-serif;
-                font-size: 10px;
-                color: red;
-                margin-top: 20px;
-                margin-bottom: 0px;
-                box-sizing: border-box;
-                width: 200px;
-                display: flex;
-                justify-content: center;
-                
-            }
-        }
-
-        .field {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            font-family: Geneva, sans-serif;
-        }
+    .error {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      box-sizing: border-box;
+      p {
+        font-family: Geneva, sans-serif;
+        font-size: 10px;
+        color: red;
+        margin-top: 20px;
+        margin-bottom: 0px;
+        box-sizing: border-box;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+      }
     }
+
+    .field {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-family: Geneva, sans-serif;
+    }
+  }
 }

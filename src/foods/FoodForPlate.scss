@@ -1,48 +1,45 @@
 .FoodForPlate {
+  box-sizing: border-box;
+  max-width: 400px;
+  min-width: 300px;
+
+  .error {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     box-sizing: border-box;
-    max-width: 400px;
-    min-width: 300px;
-
-    .error {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        box-sizing: border-box;
-        p {
-            font-family: Geneva, sans-serif;
-            font-size: 10px;
-            color: red;
-            margin-top: 20px;
-            margin-bottom: 0px;
-            box-sizing: border-box;
-            width: 200px;
-            display: flex;
-            justify-content: center;
-            
-        }
+    p {
+      font-family: Geneva, sans-serif;
+      font-size: 10px;
+      color: red;
+      margin-top: 20px;
+      margin-bottom: 0px;
+      box-sizing: border-box;
+      width: 200px;
+      display: flex;
+      justify-content: center;
     }
+  }
 
-    img {
-        border-radius: 5px;
-    }
-    
-    button {
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        vertical-align: middle;
-        width: 100px;
-        user-select: none;
-        padding: 5px 5px;
-        font-size: 10px;
-        border-radius: 0.25rem;
-        color: #fff;
-        background-color: #df933c;
-        border-color: #e05e2b;
-        margin-top: 1rem !important;
-        font-weight: 600 !important;
-        cursor: pointer;
-    }
+  img {
+    border-radius: 5px;
+  }
 
-    
+  button {
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
+    user-select: none;
+    padding: 5px 5px;
+    font-size: 10px;
+    border-radius: 0.25rem;
+    color: #fff;
+    background-color: #df933c;
+    border-color: #e05e2b;
+    margin-top: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+  }
 }

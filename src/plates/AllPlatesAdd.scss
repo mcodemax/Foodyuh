@@ -1,102 +1,96 @@
 .AllPlatesAdd {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    p {
-        font-size: 35px;
+  p {
+    font-size: 35px;
+  }
+
+  .AllPlatesAdd-PlatesList {
+    margin: 0 auto;
+    max-width: 1400px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px 20px; /* row-gap column gap */
+
+    .plate {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 200px;
+      min-height: 200px;
+      max-height: 200px;
+
+      a {
+        text-decoration: none;
+        box-sizing: border-box;
+        font-style: italic;
+        font-size: 20px;
+      }
+
+      a:visited {
+        text-decoration: none;
+        color: #c7d6e6;
+        font-style: italic;
+      }
+
+      p {
+        font-size: 12px;
+      }
+
+      button {
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        width: 100px;
+        user-select: none;
+        padding: 5px 5px;
+        font-size: 10px;
+        border-radius: 0.25rem;
+        color: #fff;
+        background-color: #df933c;
+        border-color: #e05e2b;
+        margin-top: 1rem !important;
+        font-weight: 600 !important;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .AllPlatesAdd-form {
+    label {
+      box-sizing: border-box;
+      margin-right: 5px;
     }
 
-    .AllPlatesAdd-PlatesList {
-        margin: 0 auto;
-        max-width: 1400px;
-
+    .error {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      box-sizing: border-box;
+      p {
+        font-family: Geneva, sans-serif;
+        font-size: 10px;
+        color: red;
+        margin-top: 20px;
+        margin-bottom: 0px;
+        box-sizing: border-box;
+        width: 200px;
         display: flex;
         justify-content: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px 20px; /* row-gap column gap */
-
-
-        .plate {
-            box-sizing: border-box;
-            min-width: 200px;
-            max-width: 200px;
-            min-height: 200px;
-            max-height: 200px;
-            
-            a {
-                text-decoration: none;
-                box-sizing: border-box;
-                font-style: italic;
-                font-size: 20px;
-            }
-        
-            a:visited {
-                text-decoration: none;
-                color: #c7d6e6;
-                font-style: italic;
-            }
-    
-            p {
-                font-size: 12px;
-            }
-
-            button {
-                text-decoration: none;
-                display: inline-block;
-                text-align: center;
-                vertical-align: middle;
-                width: 100px;
-                user-select: none;
-                padding: 5px 5px;
-                font-size: 10px;
-                border-radius: 0.25rem;
-                color: #fff;
-                background-color: #df933c;
-                border-color: #e05e2b;
-                margin-top: 1rem !important;
-                font-weight: 600 !important;
-                cursor: pointer;
-            }
-        }
+      }
     }
 
-    
-
-    .AllPlatesAdd-form {
-        label {
-            box-sizing: border-box;
-            margin-right: 5px;
-        }
-        
-        .error {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            box-sizing: border-box;
-            p {
-                font-family: Geneva, sans-serif;
-                font-size: 10px;
-                color: red;
-                margin-top: 20px;
-                margin-bottom: 0px;
-                box-sizing: border-box;
-                width: 200px;
-                display: flex;
-                justify-content: center;
-                
-            }
-        }
-
-        .field {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            font-family: Geneva, sans-serif;
-        }
+    .field {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-family: Geneva, sans-serif;
     }
-
-    
+  }
 }

@@ -5,12 +5,13 @@ import useLocalStorage from './hooks/useLocalStorage';
 import Navigation from './nav/Navigation';
 import FoodyuhApi from './foodyuhApi';
 import UserContext from './auth/UserContext';
+import LoadingSpinner from './LoadingSpinner';
 
 export const TOKEN_STORAGE_ID = 'foodyuh-token';
 
 function App() {
   const [infoLoaded, setInfoLoaded] = useState(false);
-  const [userInfoUpdated, setUserInfoUpdated] = useState(false); //used when plates are added or userinfo changed
+  const [userInfoUpdated, setUserInfoUpdated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [showMessage, setShowMessage] = useState('');
   const [plateIds, setPlateIds] = useState([]);
@@ -29,7 +30,7 @@ function App() {
 
   async function signUp(userObj) {
     try {
-      let token = await FoodyuhApi.register(userObj); //need2check if works
+      let token = await FoodyuhApi.register(userObj);
       setToken(token);
       return { success: true };
     } catch (errors) {
@@ -85,7 +86,7 @@ function App() {
     getCurrentUser();
   }, [token, userInfoUpdated]); 
 
-  if (!infoLoaded) return <>{`WE LOADING`}</>; //change to a better loading icon
+  if (!infoLoaded) return <LoadingSpinner />; //change to a better loading icon
 
   return (
     <UserContext.Provider

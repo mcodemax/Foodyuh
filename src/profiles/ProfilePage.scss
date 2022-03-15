@@ -1,80 +1,77 @@
 .ProfilePage {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #c7d6e6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  width: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 720px;
+  text-align: center !important;
+
+  .ProfilePage-Message {
+    color: rgb(159, 192, 150);
+  }
+
+  .ProfilePage-changeInfo-failed {
+    color: red;
+  }
+
+  button {
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    padding: 0.3rem 0.75rem;
     font-size: 1rem;
-    font-weight: 400;
     line-height: 1.5;
-    color: #c7d6e6;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-    width: auto;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 720px;
-    text-align: center!important;
+    border-radius: 0.25rem;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    margin-top: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+  }
 
-    .ProfilePage-Message {
-        color: rgb(159, 192, 150);
+  .field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Geneva, sans-serif;
+
+    label {
+      box-sizing: border-box;
+      width: 180px;
+      margin-top: 0;
+      flex-basis: 33%;
     }
 
-    .ProfilePage-changeInfo-failed {
-        color: red;
+    input {
+      box-sizing: border-box;
+      color: blue;
+      width: 180px;
+      margin-top: 0;
+      flex-basis: 33%;
+      border-radius: 9px;
     }
 
-    button {
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        vertical-align: middle;
-        user-select: none;
-        padding: .3rem .75rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        border-radius: .25rem;
-        color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
-        margin-top: 1rem!important;
-        font-weight: 600!important;
-        cursor: pointer;       
+    p {
+      font-family: Geneva, sans-serif;
+      font-size: 10px;
+      color: red;
+      margin-top: 0;
+      margin-bottom: 0;
+      box-sizing: border-box;
+      width: 200px;
+      flex-basis: 33%;
+      align-self: center;
     }
-
-    .field {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-family: Geneva, sans-serif;
-
-        label {
-            box-sizing: border-box;
-            width: 180px;
-            margin-top: 0;
-            flex-basis: 33%;
-        }
-
-        input {
-            box-sizing: border-box;
-            color: blue;
-            width: 180px;
-            margin-top: 0;
-            flex-basis: 33%;
-            border-radius: 9px;
-        }
-
-        p {
-            font-family: Geneva, sans-serif;
-            font-size: 10px;
-            color: red;
-            margin-top: 0;
-            margin-bottom: 0;
-            box-sizing: border-box;
-            width: 200px;
-            flex-basis: 33%;
-            align-self: center;
-        }
-
-        
-    }
-
+  }
 }
