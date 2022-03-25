@@ -15,7 +15,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [showMessage, setShowMessage] = useState('');
   const [plateIds, setPlateIds] = useState([]);
-  
+
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
 
   console.debug(
@@ -26,7 +26,7 @@ function App() {
     currentUser,
     'token=',
     token
-  );//maybe take off eventually
+  ); //maybe take off eventually
 
   async function signUp(userObj) {
     try {
@@ -84,9 +84,14 @@ function App() {
     // to false to control the spinner.
     setInfoLoaded(false);
     getCurrentUser();
-  }, [token, userInfoUpdated]); 
+  }, [token, userInfoUpdated]);
 
-  if (!infoLoaded) return <LoadingSpinner />; //change to a better loading icon
+  if (!infoLoaded)
+    return (
+      <div className='App loading'>
+        <LoadingSpinner />
+      </div>
+    );
 
   return (
     <UserContext.Provider
@@ -101,11 +106,11 @@ function App() {
         logout,
         signUp,
         setShowMessage,
-        showMessage
+        showMessage,
       }}
     >
       <div className='App'>
-          <Navigation logout={logout} />
+        <Navigation logout={logout} />
       </div>
     </UserContext.Provider>
   );

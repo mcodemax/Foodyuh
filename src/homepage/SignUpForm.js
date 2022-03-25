@@ -73,7 +73,7 @@ const SignUpForm = ({ signUp }) => {
         {signUpErrors && signUpErrors.length
           ? signUpErrors.map((error) => {
               return (
-                <div className='SignUpForm-failed' key={uuidv4()}>
+                <div className='SignUpForm warning' key={uuidv4()}>
                   {error}
                 </div>
               );

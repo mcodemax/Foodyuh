@@ -14,6 +14,14 @@
   max-width: 720px;
   text-align: center !important;
 
+  .warning {
+    font-family: Geneva, sans-serif;
+    color: red;
+    box-sizing: border-box;
+    font-size: 20px;
+    height: 12px;
+  }
+
   .SignUpForm-form {
     display: flex;
     flex-direction: column;

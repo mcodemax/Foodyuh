@@ -96,12 +96,12 @@ function AllPlatesAdd() {
               <div className={'AllPlatesAdd-form-name field'}>
                 <label htmlFor='name'>Plate Name</label>
                 <Field type='text' id='name' name='name' />
-                <ErrorMessage name='name' />
+                <p className='form-warning'><ErrorMessage name='name' /></p>
               </div>
               <div className={'AllPlatesAdd-form-description field'}>
                 <label htmlFor='description'>Plate Description</label>
                 <Field type='text' id='description' name='description' />
-                <ErrorMessage name='description' />
+                <p className='form-warning'><ErrorMessage name='description' /></p>
               </div>
               <button type='submit' id='submit'>
                 Submit

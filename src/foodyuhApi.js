@@ -3,13 +3,8 @@ import axios from 'axios';
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
 
 /** API Class.
- *
  * Static class tying together methods used to get/send to to the API.
- * There shouldn't be any frontend-specific stuff here, and there shouldn't
- * be any API-aware stuff elsewhere in the frontend.
- *
  */
-
 class FoodyuhApi {
   // the token for interactive with the API will be stored here.
   static token;
@@ -106,7 +101,6 @@ class FoodyuhApi {
 
   /** Delete food from specific plate 
    * fdcId must be text not integer
-   * ;works
   */
   static async deleteFood(fdcId, plateId) {
     let res = await this.request(`plates/${plateId}`, {fdcId: fdcId.toString() }, 'delete');

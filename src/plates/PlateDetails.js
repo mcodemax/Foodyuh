@@ -9,9 +9,6 @@ import FoodForPlate from '../foods/FoodForPlate';
 import { foodTotals } from './foodNutrients';
 import LoadingSpinner from '../LoadingSpinner';
 
-//when user adds a plate foodyuhapi.addPlate(name, description) is called, plate is returned
-//they get redirected to the returned plate specific page where they can add foods
-
 /** Shows all existing plates & has a form to add plates */
 function PlateDetails() {
   const { plateId } = useParams();

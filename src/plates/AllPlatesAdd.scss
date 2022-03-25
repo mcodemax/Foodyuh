@@ -63,10 +63,7 @@
   }
 
   .AllPlatesAdd-form {
-    label {
-      box-sizing: border-box;
-      margin-right: 5px;
-    }
+    
 
     .error {
       display: flex;
@@ -89,8 +86,32 @@
     .field {
       display: flex;
       flex-direction: row;
+      box-sizing: border-box;
       justify-content: space-between;
       font-family: Geneva, sans-serif;
+      font-size: 15.5px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      max-height: 15px;
+      align-items: center;
+
+      label {
+        box-sizing: border-box;
+        width: 150px;
+        margin-right: 5px;
+      }
+
+      input {
+        box-sizing: border-box;
+        width: 300px;
+      }
+
+      .form-warning {
+        margin-left: 5px;
+        color: red;
+        width: 150px;
+        font-size: 15.5px;
+      }
     }
   }
 }
