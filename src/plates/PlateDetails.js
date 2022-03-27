@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import FoodSearch from '../foods/FoodSearch';
 import FoodForPlate from '../foods/FoodForPlate';
 import { foodTotals } from './foodNutrients';
+import nutrientKeys from '../nutrientKeys';
 import LoadingSpinner from '../LoadingSpinner';
 
 /** Shows all existing plates & has a form to add plates */
@@ -99,31 +100,31 @@ function PlateDetails() {
           <div className='totalnutrition'>
             <p>Total Plate Nutrition:</p>
             <p>
-              {totalNutrition[208].value} {totalNutrition[208].unitName}
+              {+totalNutrition[nutrientKeys.kcals].value.toFixed(2)} {totalNutrition[nutrientKeys.kcals].unitName}
             </p>
             <p>
-              {totalNutrition[203].value} {totalNutrition[203].unitName}{' '}
-              {totalNutrition[203].nutrientName}
+              {+totalNutrition[nutrientKeys.protein].value.toFixed(2)} {totalNutrition[nutrientKeys.protein].unitName}{' '}
+              {totalNutrition[nutrientKeys.protein].nutrientName}
             </p>
             <p>
-              {totalNutrition[205].value} {totalNutrition[205].unitName}{' '}
-              {totalNutrition[205].nutrientName}
+              {+totalNutrition[nutrientKeys.carbs].value.toFixed(2)} {totalNutrition[nutrientKeys.carbs].unitName}{' '}
+              {totalNutrition[nutrientKeys.carbs].nutrientName}
             </p>
             <p>
-              {totalNutrition[204].value} {totalNutrition[204].unitName}{' '}
-              {totalNutrition[204].nutrientName}
+              {+totalNutrition[nutrientKeys.fats].value.toFixed(2)} {totalNutrition[nutrientKeys.fats].unitName}{' '}
+              {totalNutrition[nutrientKeys.fats].nutrientName}
             </p>
             <p>
-              {totalNutrition[291].value} {totalNutrition[291].unitName}{' '}
-              {totalNutrition[291].nutrientName}
+              {+totalNutrition[nutrientKeys.fiber].value.toFixed(2)} {totalNutrition[nutrientKeys.fiber].unitName}{' '}
+              {totalNutrition[nutrientKeys.fiber].nutrientName}
             </p>
             <p>
-              {totalNutrition[401].value} {totalNutrition[401].unitName}{' '}
-              {totalNutrition[401].nutrientName}
+              {+totalNutrition[nutrientKeys.vitC].value.toFixed(2)} {totalNutrition[nutrientKeys.vitC].unitName}{' '}
+              {totalNutrition[nutrientKeys.vitC].nutrientName}
             </p>
             <p>
-              {totalNutrition[301].value} {totalNutrition[301].unitName}{' '}
-              {totalNutrition[301].nutrientName}
+              {+totalNutrition[nutrientKeys.calcium].value.toFixed(2)} {totalNutrition[nutrientKeys.calcium].unitName}{' '}
+              {totalNutrition[nutrientKeys.calcium].nutrientName}
             </p>
           </div>
         ) : (

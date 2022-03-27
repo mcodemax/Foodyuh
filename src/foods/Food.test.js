@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { act, render } from "@testing-library/react";
+import { act } from "@testing-library/react";
 import Food from './Food'
 import UserContext from '../auth/UserContext';
 
@@ -147,11 +147,4 @@ it("renders without crashing", function () {
             </UserContext.Provider>
         ), container);
     });
-});
-
-it("matches snapshot", function () {
-  const { asFragment } = render(
-      <Food />
-  );
-  expect(asFragment()).toMatchSnapshot();
 });

@@ -28,7 +28,7 @@ function Food({ food, plateId }) {
       <>
         {foodNutrients.map((nutrient) => {
           return (
-            <div className='Food-nutrient' key={uuidv4()}>
+            <div className='Food-nutrient' key={uuidv4()}> 
               <span>
                 {nutrient.nutrientName}: {nutrient.value}
                 {nutrient.unitName}
