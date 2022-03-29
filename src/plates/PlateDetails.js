@@ -19,38 +19,42 @@ function PlateDetails() {
   const [plate, setPlate] = useState();
   const [totalNutrition, settotalNutrition] = useState(foodTotals);
 
-  useEffect(async () => {
-    let foodDetailsPromises = [];
-    let foodsPexelImagesPromises = [];
-    setPlateInfoLoaded(false);
+  useEffect(() => {
+    const attachImgs = async () => {
+      let foodDetailsPromises = [];
+      let foodsPexelImagesPromises = [];
+      setPlateInfoLoaded(false);
 
-    try {
-      const res = await FoodyuhApi.getPlate(plateId);
-      res.foods.forEach((food) => {
-        foodDetailsPromises.push(FoodyuhApi.getFoodbyFdcId(food.fdcId));
-      });
+      try {
+        const res = await FoodyuhApi.getPlate(plateId);
+        res.foods.forEach((food) => {
+          foodDetailsPromises.push(FoodyuhApi.getFoodbyFdcId(food.fdcId));
+        });
 
-      const resNutritionDetails = await Promise.all(foodDetailsPromises);
-      res.foods.forEach((food, idx) => {
-        food.details = resNutritionDetails[idx];
-      });
+        const resNutritionDetails = await Promise.all(foodDetailsPromises);
+        res.foods.forEach((food, idx) => {
+          food.details = resNutritionDetails[idx];
+        });
 
-      res.foods.forEach((food) => {
-        foodsPexelImagesPromises.push(
-          FoodyuhApi.getImages(food.details.description)
-        );
-      });
+        res.foods.forEach((food) => {
+          foodsPexelImagesPromises.push(
+            FoodyuhApi.getImages(food.details.description)
+          );
+        });
 
-      const resFoodsPexelImages = await Promise.all(foodsPexelImagesPromises);
-      res.foods.forEach((food, idx) => {
-        food.details.image = resFoodsPexelImages[idx][0].src.small;
-      });
+        const resFoodsPexelImages = await Promise.all(foodsPexelImagesPromises);
+        res.foods.forEach((food, idx) => {
+          food.details.image = resFoodsPexelImages[idx][0].src.small;
+        });
 
-      setPlate(res);
-    } catch (error) {
-      setErrors(error);
-    }
-  }, [currentUser]);
+        setPlate(res);
+      } catch (error) {
+        setErrors(error);
+      }
+    };
+
+    attachImgs();
+  }, [currentUser, plateId]);
 
   useEffect(() => {
     if (plate) {
@@ -82,14 +86,12 @@ function PlateDetails() {
           {plate ? (
             plate.foods.map((food) => {
               return (
-                <div className='food' key={`food-${food.fdcId}-${uuidv4()}`}>
-                  <FoodForPlate
-                    food={food.details}
-                    plateId={plateId}
-                    setTotalNutrition={settotalNutrition}
-                    key={uuidv4()}
-                  />
-                </div>
+                <FoodForPlate
+                  food={food.details}
+                  plateId={plateId}
+                  setTotalNutrition={settotalNutrition}
+                  key={uuidv4()}
+                />
               );
             })
           ) : (
@@ -100,30 +102,37 @@ function PlateDetails() {
           <div className='totalnutrition'>
             <p>Total Plate Nutrition:</p>
             <p>
-              {+totalNutrition[nutrientKeys.kcals].value.toFixed(2)} {totalNutrition[nutrientKeys.kcals].unitName}
+              {+totalNutrition[nutrientKeys.kcals].value.toFixed(2)}{' '}
+              {totalNutrition[nutrientKeys.kcals].unitName}
             </p>
             <p>
-              {+totalNutrition[nutrientKeys.protein].value.toFixed(2)} {totalNutrition[nutrientKeys.protein].unitName}{' '}
+              {+totalNutrition[nutrientKeys.protein].value.toFixed(2)}{' '}
+              {totalNutrition[nutrientKeys.protein].unitName}{' '}
               {totalNutrition[nutrientKeys.protein].nutrientName}
             </p>
             <p>
-              {+totalNutrition[nutrientKeys.carbs].value.toFixed(2)} {totalNutrition[nutrientKeys.carbs].unitName}{' '}
+              {+totalNutrition[nutrientKeys.carbs].value.toFixed(2)}{' '}
+              {totalNutrition[nutrientKeys.carbs].unitName}{' '}
               {totalNutrition[nutrientKeys.carbs].nutrientName}
             </p>
             <p>
-              {+totalNutrition[nutrientKeys.fats].value.toFixed(2)} {totalNutrition[nutrientKeys.fats].unitName}{' '}
+              {+totalNutrition[nutrientKeys.fats].value.toFixed(2)}{' '}
+              {totalNutrition[nutrientKeys.fats].unitName}{' '}
               {totalNutrition[nutrientKeys.fats].nutrientName}
             </p>
             <p>
-              {+totalNutrition[nutrientKeys.fiber].value.toFixed(2)} {totalNutrition[nutrientKeys.fiber].unitName}{' '}
+              {+totalNutrition[nutrientKeys.fiber].value.toFixed(2)}{' '}
+              {totalNutrition[nutrientKeys.fiber].unitName}{' '}
               {totalNutrition[nutrientKeys.fiber].nutrientName}
             </p>
             <p>
-              {+totalNutrition[nutrientKeys.vitC].value.toFixed(2)} {totalNutrition[nutrientKeys.vitC].unitName}{' '}
+              {+totalNutrition[nutrientKeys.vitC].value.toFixed(2)}{' '}
+              {totalNutrition[nutrientKeys.vitC].unitName}{' '}
               {totalNutrition[nutrientKeys.vitC].nutrientName}
             </p>
             <p>
-              {+totalNutrition[nutrientKeys.calcium].value.toFixed(2)} {totalNutrition[nutrientKeys.calcium].unitName}{' '}
+              {+totalNutrition[nutrientKeys.calcium].value.toFixed(2)}{' '}
+              {totalNutrition[nutrientKeys.calcium].unitName}{' '}
               {totalNutrition[nutrientKeys.calcium].nutrientName}
             </p>
           </div>

@@ -39,7 +39,7 @@ function FoodForPlate({ food, plateId }) {
   };
 
   return (
-    <div className='FoodForPlate'>
+    <div className='FoodForPlate' >
       {foodPlateErrors.length
         ? foodPlateErrors.map((error) => {
             return (

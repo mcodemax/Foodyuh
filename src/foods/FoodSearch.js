@@ -15,11 +15,15 @@ function FoodSearch({ plateId }) {
   };
 
   const onSubmit = async (values, { resetForm }) => {
+    let noFoodsFound;
     try {
       const res = await FoodyuhApi.searchForFoods(values.search);
       const pics = await FoodyuhApi.getImages(values.search);
 
-      if (typeof res === 'string') throw ['No Foods Found'];
+      if (typeof res === 'string') {
+        noFoodsFound = true;
+        throw new Error('No Foods Found');
+      }
 
       res.forEach((food, idx) => {
         if (pics) {
@@ -27,13 +31,16 @@ function FoodSearch({ plateId }) {
         } else {
           food.image = '';
         }
-        console.log(pics[idx]['src']['small']);
       });
 
       setErrors([]);
       setFoods(res);
     } catch (error) {
-      setErrors(error);
+      if (noFoodsFound) {
+        setErrors(['No Foods Found']);
+      } else {
+        setErrors(error);
+      }
       resetForm({});
     }
   };
@@ -55,6 +62,15 @@ function FoodSearch({ plateId }) {
         >
           <>
             <p>Search and add a Food!</p>
+            {errors.length
+              ? errors.map((error) => {
+                  return (
+                    <div className='FoodSearch-errors' key={uuidv4()}>
+                      {error}
+                    </div>
+                  );
+                })
+              : null}
             <Form className={`FoodSearch-form`}>
               <div className={`FoodSearch-form-search`}>
                 <label htmlFor='search'>Search</label>
@@ -73,15 +89,7 @@ function FoodSearch({ plateId }) {
           </>
         </Formik>
       </div>
-      {errors.length
-        ? errors.map((error) => {
-            return (
-              <div className='FoodSearch-errors' key={uuidv4()}>
-                {error}
-              </div>
-            );
-          })
-        : null}
+
       <div className='FoodSearch-foodslist'>
         {foods
           ? foods.map((food) => {

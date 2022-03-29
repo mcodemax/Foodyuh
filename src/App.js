@@ -18,15 +18,15 @@ function App() {
 
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
 
-  console.debug(
-    'App',
-    'infoLoaded=',
-    infoLoaded,
-    'currentUser=',
-    currentUser,
-    'token=',
-    token
-  ); //maybe take off eventually
+  // console.debug(
+  //   'App',
+  //   'infoLoaded=',
+  //   infoLoaded,
+  //   'currentUser=',
+  //   currentUser,
+  //   'token=',
+  //   token
+  // );
 
   async function signUp(userObj) {
     try {

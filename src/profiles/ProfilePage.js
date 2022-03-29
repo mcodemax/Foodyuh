@@ -75,7 +75,7 @@ function ProfilePage() {
     }
 
     try {
-      const res = await FoodyuhApi.editUserInfo(
+      await FoodyuhApi.editUserInfo(
         currentUser.username,
         valuesCopy
       );
