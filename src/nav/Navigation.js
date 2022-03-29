@@ -15,7 +15,7 @@ import SignUpForm from '../homepage/SignUpForm';
 import AllPlatesAdd from '../plates/AllPlatesAdd';
 import PlateDetails from '../plates/PlateDetails';
 
-function Navigation(params) {
+function Navigation(params) {//delete params?
   const {
     currentUser,
     login,

@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="SignUpForm"
+  >
+    <p>
+      SIGN UP!
+    </p>
+    <form
+      action="#"
+      class="SignUpForm-form"
+    >
+      <div
+        class="SignUpForm-username field"
+      >
+        <label
+          for="username"
+        >
+          Username
+        </label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          value=""
+        />
+        <p
+          class="form-warning"
+        />
+      </div>
+      <div
+        class="SignUpForm-firstName field"
+      >
+        <label
+          for="firstName"
+        >
+          First Name
+        </label>
+        <input
+          id="firstName"
+          name="firstName"
+          type="text"
+          value=""
+        />
+        <p
+          class="form-warning"
+        />
+      </div>
+      <div
+        class="SignUpForm-lastName field"
+      >
+        <label
+          for="lastName"
+        >
+          Last Name
+        </label>
+        <input
+          id="lastName"
+          name="lastName"
+          type="text"
+          value=""
+        />
+        <p
+          class="form-warning"
+        />
+      </div>
+      <div
+        class="SignUpForm-email field"
+      >
+        <label
+          for="email"
+        >
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="text"
+          value=""
+        />
+        <p
+          class="form-warning"
+        />
+      </div>
+      <div
+        class="SignUpForm-password field"
+      >
+        <label
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          value=""
+        />
+        <p
+          class="form-warning"
+        />
+      </div>
+      <div
+        class="SignUpForm-confirmPassword field"
+      >
+        <label
+          for="confirmPassword"
+        >
+          Confirm Password
+        </label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          value=""
+        />
+        <p
+          class="form-warning"
+        />
+      </div>
+      <button
+        id="submit"
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

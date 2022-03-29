@@ -138,7 +138,6 @@ afterEach(() => {
 });
 
 it("renders without crashing", function () {
-    
     act(() => {
         ReactDOM.render((
             //dummy values where userInfo related state passed in for this test
