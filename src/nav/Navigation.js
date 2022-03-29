@@ -33,7 +33,6 @@ function Navigation(params) {
             path='/'
             element={
               <>
-                {console.debug('In Navigation.js -> / route')}
                 {!currentUser ? (
                   <div className='Navigation-home'>
                     <h1>Foodyuh</h1>
@@ -87,8 +86,6 @@ function Navigation(params) {
             path='/user/profile'
             element={
               <>
-                {console.debug('In Navigation.js -> /user/profile')}
-
                 {currentUser ? <ProfilePage /> : <Navigate replace to='/' />}
               </>
             }

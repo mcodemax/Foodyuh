@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="FoodSearch"
+  >
+    <div
+      class="FoodSearch-formik"
+    >
+      <p>
+        Search and add a Food!
+      </p>
+      <form
+        action="#"
+        class="FoodSearch-form"
+      >
+        <div
+          class="FoodSearch-form-search"
+        >
+          <label
+            for="search"
+          >
+            Search
+          </label>
+          <input
+            id="search"
+            name="search"
+            placeholder="Find a food"
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          id="submit"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <div
+      class="FoodSearch-foodslist"
+    />
+  </div>
+</DocumentFragment>
+`;

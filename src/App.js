@@ -60,7 +60,7 @@ function App() {
   // this should not run. It only needs to re-run when a user logs out, so
   // the value of the token is a dependency for this effect.
   useEffect(() => {
-    console.debug('App useEffect loadUserInfo', 'token=', token);
+    // console.debug('App useEffect loadUserInfo', 'token=', token);
 
     const getCurrentUser = async () => {
       if (token) {

@@ -94,9 +94,7 @@ function FoodSearch({ plateId }) {
         {foods
           ? foods.map((food) => {
               return (
-                <>
-                  <Food food={food} plateId={plateId} key={uuidv4()} />
-                </>
+                <Food food={food} plateId={plateId} key={uuidv4()} />
               );
             })
           : null}
