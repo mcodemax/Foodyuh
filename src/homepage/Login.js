@@ -4,8 +4,9 @@ import './Login.scss';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-//might need to implement isLoading banner until requests are finished
-//for logging in
+/**
+ * Login Component
+ */
 function Login({ login }) {
   const navigate = useNavigate();
   const [loginErrors, setLoginErrors] = useState([]);

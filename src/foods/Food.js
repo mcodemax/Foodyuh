@@ -4,6 +4,9 @@ import FoodyuhApi from '../foodyuhApi';
 import UserContext from '../auth/UserContext';
 import { v4 as uuidv4 } from 'uuid';
 
+/**
+ * Food Component used by a FoodSearch component when a food search query is made
+ */
 function Food({ food, plateId }) {
   const [foodPlateErrors, setFoodPlateErrors] = useState([]);
   const { setUserInfoUpdated, userInfoUpdated } = useContext(UserContext);

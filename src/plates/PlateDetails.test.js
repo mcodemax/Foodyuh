@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "@testing-library/react";
 import PlateDetails from "./PlateDetails";
 import UserContext from '../auth/UserContext';
 import { act } from "@testing-library/react";

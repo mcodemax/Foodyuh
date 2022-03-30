@@ -28,13 +28,9 @@ Description: A website where users can create a several plates or "Portfolios" o
 - Database: PostgresQL
 - Deployment: Heroku
 
-To install required frontend depen, run the following in terminal:
+To install required frontend depencies, run the following in terminal:
 
-`python3 -m venv venv`
-
-`source venv/bin/activate`
-
-`pip install -r requirements.txt`
+`npm i`
 
 Then run the backend server by typing `nodemon` or `nodemon FILE_NAME`
 

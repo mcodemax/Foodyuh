@@ -4,6 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 import UserContext from '../auth/UserContext';
 import './FoodForPlate.scss';
 
+/**
+ * FoodForPlate Component used by a user's plate
+ */
 function FoodForPlate({ food, plateId }) {
   const [foodPlateErrors, setFoodPlateErrors] = useState([]);
   const { setUserInfoUpdated, userInfoUpdated } = useContext(UserContext);
@@ -55,7 +58,6 @@ function FoodForPlate({ food, plateId }) {
       <div>
         <b>Nutrient Profile:</b> {nutrientDisplay(food.foodNutrients)}
       </div>
-
       <button onClick={() => removeFood(food.fdcId, plateId)}>
         Remove Food
       </button>

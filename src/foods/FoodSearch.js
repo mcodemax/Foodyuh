@@ -6,6 +6,9 @@ import { v4 as uuidv4 } from 'uuid';
 import * as Yup from 'yup';
 import Food from './Food';
 
+/**
+ * FoodSearch component to search for foods from input query
+ */
 function FoodSearch({ plateId }) {
   const [foods, setFoods] = useState();
   const [errors, setErrors] = useState([]);
@@ -20,7 +23,7 @@ function FoodSearch({ plateId }) {
       const res = await FoodyuhApi.searchForFoods(values.search);
       const pics = await FoodyuhApi.getImages(values.search);
 
-      if (typeof res === 'string') {
+      if (typeof res === 'string' && res === 'No foods found') {
         noFoodsFound = true;
         throw new Error('No Foods Found');
       }

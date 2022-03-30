@@ -5,9 +5,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
 
-/** generates signup form
- * I: signUp function to change state of logged in or not
- * { username, password, firstName, lastName, email }
+/**
+ * Signup form component
  */
 const SignUpForm = ({ signUp }) => {
   const [signUpErrors, setSignUpErrors] = useState([]);
@@ -62,7 +61,7 @@ const SignUpForm = ({ signUp }) => {
     if (res.success) {
       navigate('/user/profile');
     } else {
-      setSignUpErrors(res.errors); //trouble shoot later how to actuallyy display these properly
+      setSignUpErrors(res.errors);
       resetForm({});
     }
   };

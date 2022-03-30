@@ -35,7 +35,8 @@ function PlateDetails() {
         res.foods.forEach((food, idx) => {
           food.details = resNutritionDetails[idx];
         });
-
+        //can these be combined? array method chaining, forEach followed by a map??
+        // currently performance is not optimal
         res.foods.forEach((food) => {
           foodsPexelImagesPromises.push(
             FoodyuhApi.getImages(food.details.description)
