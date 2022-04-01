@@ -24,7 +24,7 @@ Description: A website where users can create a several plates or "Portfolios" o
     
 ### Tech stack:
 - Front-end: HTML, Sass, JS, React, Axios, Formik
-- Backend: Node.js, Express, Bcrypt
+- Backend: Node.js, Express, Bcrypt [Repo](https://github.com/mcodemax/Foodyuh-backend)
 - Database: PostgresQL
 - Deployment: Heroku
 
