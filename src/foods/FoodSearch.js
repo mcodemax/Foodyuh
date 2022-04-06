@@ -83,7 +83,9 @@ function FoodSearch({ plateId }) {
                   name='search'
                   placeholder='Find a food'
                 />
-                <ErrorMessage name='search' />
+                <p className='form-warning'>
+                  <ErrorMessage name='search' />
+                </p>
               </div>
               <button type='submit' id='submit'>
                 Submit
@@ -96,9 +98,7 @@ function FoodSearch({ plateId }) {
       <div className='FoodSearch-foodslist'>
         {foods
           ? foods.map((food) => {
-              return (
-                <Food food={food} plateId={plateId} key={uuidv4()} />
-              );
+              return <Food food={food} plateId={plateId} key={uuidv4()} />;
             })
           : null}
       </div>
