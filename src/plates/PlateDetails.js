@@ -21,32 +21,22 @@ function PlateDetails() {
 
   useEffect(() => {
     const attachImgs = async () => {
-      let foodDetailsPromises = [];
-      let foodsPexelImagesPromises = [];
       setPlateInfoLoaded(false);
 
       try {
         const res = await FoodyuhApi.getPlate(plateId);
-        res.foods.forEach((food) => {
-          foodDetailsPromises.push(FoodyuhApi.getFoodbyFdcId(food.fdcId));
-        });
 
-        const resNutritionDetails = await Promise.all(foodDetailsPromises);
-        res.foods.forEach((food, idx) => {
-          food.details = resNutritionDetails[idx];
-        });
-        //can these be combined? array method chaining, forEach followed by a map??
-        // currently performance is not optimal
-        res.foods.forEach((food) => {
-          foodsPexelImagesPromises.push(
-            FoodyuhApi.getImages(food.details.description)
-          );
-        });
+        await Promise.all(
+          res.foods.map(async (food) => {
+            const foodDetails = await FoodyuhApi.getFoodbyFdcId(food.fdcId);
+            food.details = foodDetails;
 
-        const resFoodsPexelImages = await Promise.all(foodsPexelImagesPromises);
-        res.foods.forEach((food, idx) => {
-          food.details.image = resFoodsPexelImages[idx][0].src.small;
-        });
+            const foodsPexelImages = await FoodyuhApi.getImages(
+              food.details.description
+            );
+            food.details.image = foodsPexelImages[0].src.small;
+          })
+        );
 
         setPlate(res);
       } catch (error) {

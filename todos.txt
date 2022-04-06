@@ -138,3 +138,33 @@ Promise.allSettled => returns promise after all promises returned or rejected
 
 
 document the nutriton id's in the code for both frontned and backend
+
+
+notes: storing api key in localstorage is bad b/c atacker can run script to access it and steal your token, this is against security best practices
+
+
+REFACORING api calls in PlateDetails:
+        // start
+        // res.foods.map((food) => {//map is async
+        // const foods = await Promise.all( res.foods.map( async (food) => {
+        //   const foodDetails = await FoodyuhApi.getFoodbyFdcId(food.fdcId);
+        //   food.details = foodDetails;
+
+        //   const foodsPexelImages = await FoodyuhApi.getImages(food.details.description);
+        //   food.details.image = foodsPexelImages[0].src.small;
+
+        //   //wanted to change code to something like above but each elemtn in res.foods needs to return 1 promise
+        // }));
+        //end
+
+    Use above for interview: PlateDetails originally had many for loops, first awaiting api calls, pushing them into an array with Promise.all then manipulating the food res object
+        and attaching details by iterating through the array returned by Promise.all, this was repeated when attaching Pexel image data to my res object which could also not be completed 
+        until all those previous calls and code was run. 
+        I then refactored the code to this:
+        await Promise.all( res.foods.map( async (food) => {
+          const foodDetails = await FoodyuhApi.getFoodbyFdcId(food.fdcId);
+          food.details = foodDetails;
+
+          const foodsPexelImages = await FoodyuhApi.getImages(food.details.description);
+          food.details.image = foodsPexelImages[0].src.small;
+        })); //which performed way better and eliminated iterating through many loops, and also uses a lot less space.

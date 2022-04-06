@@ -24,22 +24,16 @@ Description: A website where users can create a several plates or "Portfolios" o
     
 ### Tech stack:
 - Front-end: HTML, Sass, JS, React, Axios, Formik
-- Backend: Node.js, Express, Bcrypt [Repo](https://github.com/mcodemax/Foodyuh-backend)
+- Backend: Node.js, Express, Bcrypt     [See Backend Repo](https://github.com/mcodemax/Foodyuh-backend)
 - Database: PostgresQL
-- Deployment: Heroku
+- Front-end Deployment: Surge
+- Back-end Deployment: Heroku
 
 To install required frontend depencies, run the following in terminal:
 
 `npm i`
 
 Then run the backend server by typing `nodemon` or `nodemon FILE_NAME`
-
-**The code in this repo is written specifically for deployment purposes. In order to interact with the code locally on your machine, you must do the following:**
-1. Create a file `secret_codes.py` and define the `ALPHA_VAN_API_KEY` and `SECRET_KEY` variables according to your own dev environment.
-    - Add to `.gitignore` file
-2. Uncomment out secretcodes import in app.py
-3. change xxx to SECRET_KEY in line 30 of app.py ... where it says app.config['SECRET_KEY']
-4. change ALPHA_VAN_API_KEY const declaration line in app.py
 
 ### Possible features to add:
 - **Payment Integration with Stripe**: Gate keep routes that a user must pay for.
