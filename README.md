@@ -2,7 +2,7 @@
 Make and analyze your plate.
 ###### Developer: Maxwell Johnson
 
-[Link to Foodyuh](https://github.com/mcodemax/Foodyuh#readme) 
+[Link to Foodyuh, see the deployed App!](https://foodyuh.surge.sh/) 
 
 Description: A website where users can create a several plates or "Portfolios" of food and have a nutritional analysis of all components combined.
 
