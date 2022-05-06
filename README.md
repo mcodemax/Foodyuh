@@ -6,7 +6,7 @@ Make and analyze your plate.
 
 ![image of UI](https://user-images.githubusercontent.com/63630792/162107405-af0e3cde-c66a-4bb4-9b70-4f9b1c80fa23.png)
 
-Description: A website where users can create a several plates or "Portfolios" of food and have a nutritional analysis of all components combined.
+Description: A website where users can create several plates or "Portfolios" of food and have a nutritional analysis of all components combined.
 
 ### Features:
 - **Create multiple plates**: Users can create multiple plates with different foods.
